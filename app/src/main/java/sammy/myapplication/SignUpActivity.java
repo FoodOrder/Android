@@ -35,8 +35,6 @@ public class SignUpActivity extends AppCompatActivity {
 
     private EditText etPass;
 
-    private EditText etphone;
-
     private Button btnSignUp;
 
     private static final String SIGNUP_API_URL = "http://140.134.26.74:20080/android-backend/webapi/user/register";

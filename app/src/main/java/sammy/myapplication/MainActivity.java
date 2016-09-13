@@ -13,7 +13,6 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnOrder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     //OrderActivity view change
-    public void GotoOrderAct(View v) {
+     public void GotoOrderAct(View v) {
         Intent intent = new Intent();
         intent.setClass(MainActivity.this, OrderActivity.class);
         startActivity(intent);
@@ -41,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+
+            return true;
     }
 
     @Override
