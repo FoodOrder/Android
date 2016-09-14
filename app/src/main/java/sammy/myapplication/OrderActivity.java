@@ -1,6 +1,7 @@
 package sammy.myapplication;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -11,8 +12,11 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,11 +59,13 @@ public class OrderActivity extends AppCompatActivity {
         shopListAdapter = new MyAdapter(this, new ArrayList<Shop>());
         shopListView.setAdapter(shopListAdapter);
 
-        new Thread() {
+        new Thread(new Runnable() {
+            @Override
             public void run() {
                 getShopListFromServer();
-            }
-        }.start();
+
+        }}).start();
+
 
         shopListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -103,6 +109,8 @@ public class OrderActivity extends AppCompatActivity {
                     Shop shop = new Shop();
                     shop.setName(((JSONObject) jsonObis.get(i)).getString("shopName"));
                     shop.setTel(((JSONObject) jsonObis.get(i)).getString("phone"));
+                    shop.setImgURL(((JSONObject) jsonObis.get(i)).getString("photo"));
+                    shop.setImg(loadImageFromURL(shop.getImgURL()));
                     listShops.add(shop);
                 }
                 Message m = new Message();
@@ -114,5 +122,17 @@ public class OrderActivity extends AppCompatActivity {
         }
      }
 
- }
+
+    private Drawable loadImageFromURL(String url) {
+        try {
+            InputStream is = (InputStream) new URL(url).getContent();
+            Drawable draw = Drawable.createFromStream(is, "src");
+            return draw;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+}
+
 

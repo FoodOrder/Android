@@ -1,5 +1,9 @@
 package sammy.myapplication;
 
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
+
 import java.util.Date;
 
 /**
@@ -10,6 +14,8 @@ public class Shop {
     private int id;
 
     private String name;
+
+    private Drawable Img;
 
     private String imgURL;
 
@@ -33,8 +39,15 @@ public class Shop {
         this.name = name;
     }
 
-    public String getImgURL() {
-        return imgURL;
+    public Drawable getImg() {
+        return Img;
+    }
+
+    public void setImg(Drawable img) {
+        Img = img;
+    }
+
+    public String getImgURL() {return imgURL;
     }
 
     public void setImgURL(String imgURL) {
