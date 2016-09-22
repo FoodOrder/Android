@@ -1,6 +1,9 @@
 package sammy.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -30,6 +34,31 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class SignUpActivity extends AppCompatActivity {
 
+    private Handler handler = new Handler() {
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case CHECK_SIGNUP: {
+                    successornot();
+                    break;
+                }
+            }
+        }
+
+    };
+
+    public String getSORN() {
+        return SORN;
+    }
+
+    public void setSORN(String SORN) {
+        this.SORN = SORN;
+    }
+
+    private String SORN;
+
+    private final String success="true";
+
+    private static final int CHECK_SIGNUP = 1;
 
     private EditText etEmail;
 
@@ -37,7 +66,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     private Button btnSignUp;
 
-    private static final String SIGNUP_API_URL = "http://140.134.26.74:20080/android-backend/webapi/user/register";
+    private static final String SIGNUP_API_URL = "http://140.134.26.71:58080/android-backend/webapi/user/register";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,15 +74,6 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         initUIComponents();
     }
 
@@ -113,12 +133,17 @@ public class SignUpActivity extends AppCompatActivity {
                         while ((line=br.readLine()) != null) {
                             response+=line;
                         }
+                        setSORN(response);
                     }
                     else {
                         response="";
-
                     }
                     Log.v("sammy", response);
+                    Message m = new Message();
+                    m.what = CHECK_SIGNUP;
+                    handler.sendMessage(m);
+
+                    System.out.println(response);
 
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
@@ -127,6 +152,17 @@ public class SignUpActivity extends AppCompatActivity {
                 }
             }
         }).start();
+    }
+
+    private void successornot(){
+        if(getSORN().equalsIgnoreCase(success)){
+            Toast.makeText(SignUpActivity.this, "註冊成功", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent();
+            intent.setClass(SignUpActivity.this, LoginActivity.class);
+            startActivity(intent);
+        }else{
+            Toast.makeText(SignUpActivity.this,"帳號已經有人使用",Toast.LENGTH_LONG).show();
+        }
     }
 
     private String getPostDataString(HashMap<String, String> params) throws UnsupportedEncodingException {

@@ -1,6 +1,9 @@
 package sammy.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -21,12 +25,38 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.security.PublicKey;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
 
 public class LoginActivity extends AppCompatActivity {
+    private Handler handler = new Handler() {
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case CHECK_LOGIN: {
+                    successornot();
+                    break;
+                }
+            }
+        }
+
+    };
+
+    private static final int CHECK_LOGIN = 1;
+
+    public String getSORN() {
+        return SORN;
+    }
+
+    public void setSORN(String SORN) {
+        this.SORN = SORN;
+    }
+
+    private String SORN;
+
+    private final String success="true";
 
     private EditText loginEmail;
 
@@ -34,8 +64,15 @@ public class LoginActivity extends AppCompatActivity {
 
     private Button btnLogin;
 
-    private static final String LOGIN_API_URL = "http://140.134.26.74:20080/android-backend/webapi/user/login";
 
+    private static final String LOGIN_API_URL = "http://140.134.26.71:58080/android-backend/webapi/user/validate";
+
+    public void GotoSignUpAct(View v) {
+        Intent intent = new Intent();
+        intent.setClass(LoginActivity.this, SignUpActivity.class);
+        startActivity(intent);
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +87,7 @@ public class LoginActivity extends AppCompatActivity {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
+
         });
         initUIComponents();
     }
@@ -57,7 +95,6 @@ public class LoginActivity extends AppCompatActivity {
 
         loginEmail = (EditText)findViewById(R.id.login_email);
         loginPass = (EditText)findViewById(R.id.login_pass);
-
         btnLogin = (Button) findViewById(R.id.btn_login);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +103,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 submitRegistration();
             }
+
         });
+
 
     }
 
@@ -91,7 +130,7 @@ public class LoginActivity extends AppCompatActivity {
                     HashMap<String, String> postDataParams = new HashMap<>();
                     postDataParams.put("email", email);
                     postDataParams.put("password", pass);
-                    postDataParams.put("userName", "sammy2");
+                    postDataParams.put("userName", "sammy");
 
                     OutputStream os = conn.getOutputStream();
                     BufferedWriter writer = new BufferedWriter(
@@ -102,19 +141,21 @@ public class LoginActivity extends AppCompatActivity {
                     writer.close();
                     os.close();
                     int responseCode=conn.getResponseCode();
-
                     if (responseCode == HttpsURLConnection.HTTP_OK) {
                         String line;
                         BufferedReader br=new BufferedReader(new InputStreamReader(conn.getInputStream()));
                         while ((line=br.readLine()) != null) {
                             response+=line;
                         }
+                        setSORN(response);
                     }
                     else {
                         response="";
-
                     }
                     Log.v("sammy", response);
+                    Message m = new Message();
+                    m.what = CHECK_LOGIN;
+                    handler.sendMessage(m);
 
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
@@ -123,6 +164,18 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         }).start();
+    }
+
+    private void successornot(){
+        if(getSORN().equalsIgnoreCase(success)){
+            Toast.makeText(LoginActivity.this,"登入成功",Toast.LENGTH_LONG).show();
+            Intent intent = new Intent();
+            intent.setClass(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            LoginActivity.this.finish();
+        }else{
+            Toast.makeText(LoginActivity.this,"帳號或密碼有誤",Toast.LENGTH_LONG).show();
+        }
     }
 
     private String getPostDataString(HashMap<String, String> params) throws UnsupportedEncodingException {
