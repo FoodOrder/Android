@@ -46,7 +46,8 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign Up"
+            android:background="#00000000"
+            android:text="註冊"
             android:id="@+id/btn_signup" />
     </LinearLayout>
 </RelativeLayout>
