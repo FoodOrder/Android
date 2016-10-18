@@ -12,7 +12,11 @@
         android:orderInCategory="100"
         android:title="註冊"
         app:showAsAction="never" />
-
+    <item
+        android:id="@+id/action_cart"
+        android:orderInCategory="100"
+        android:title="購物車"
+        app:showAsAction="never" />
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"

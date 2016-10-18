@@ -60,6 +60,8 @@ public class SignUpActivity extends AppCompatActivity {
 
     private static final int CHECK_SIGNUP = 1;
 
+    private EditText etusername;
+
     private EditText etEmail;
 
     private EditText etPass;
@@ -81,6 +83,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         etEmail = (EditText)findViewById(R.id.et_email);
         etPass = (EditText)findViewById(R.id.et_pass);
+        etusername = (EditText)findViewById(R.id.et_username);
 
         btnSignUp = (Button) findViewById(R.id.btn_signup);
 
@@ -97,6 +100,7 @@ public class SignUpActivity extends AppCompatActivity {
     private void submitRegistration(){
         final String email = etEmail.getText().toString();
         final String pass = etPass.getText().toString();
+        final String username = etusername.getText().toString();
 
         new Thread(new Runnable(){
             @Override
@@ -115,7 +119,7 @@ public class SignUpActivity extends AppCompatActivity {
                     HashMap<String, String> postDataParams = new HashMap<>();
                     postDataParams.put("email", email);
                     postDataParams.put("password", pass);
-                    postDataParams.put("userName", "sammy2");
+                    postDataParams.put("userName", username);
 
                     OutputStream os = conn.getOutputStream();
                     BufferedWriter writer = new BufferedWriter(
@@ -138,7 +142,7 @@ public class SignUpActivity extends AppCompatActivity {
                     else {
                         response="";
                     }
-                    Log.v("sammy", response);
+                    Log.v(username, response);
                     Message m = new Message();
                     m.what = CHECK_SIGNUP;
                     handler.sendMessage(m);

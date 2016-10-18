@@ -6,29 +6,28 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 import android.view.View;
 import android.widget.AdapterView;
 
 
 public class OrderActivity extends AppCompatActivity {
+    static String URL = "http://140.134.26.71:58080/android-backend/webapi/menu/";
     private static final String SERVICE_URL = "http://140.134.26.71:58080/android-backend/webapi/shop/list";
     private static final int UPDATE_SHOP_LIST = 1;
-    private MyAdapter shopListAdapter;
+    private ShopListAdapter shopListAdapter;
     private ArrayList<Shop> listShops = new ArrayList<Shop>();
 
     private Handler handler = new Handler() {
@@ -56,7 +55,7 @@ public class OrderActivity extends AppCompatActivity {
         setContentView(R.layout.activity_order);
 
         ListView shopListView = (ListView) this.findViewById(R.id.shoplistView);
-        shopListAdapter = new MyAdapter(this, new ArrayList<Shop>());
+        shopListAdapter = new ShopListAdapter(this, new ArrayList<Shop>());
         shopListView.setAdapter(shopListAdapter);
 
         new Thread(new Runnable() {
@@ -70,10 +69,10 @@ public class OrderActivity extends AppCompatActivity {
         shopListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String shopname = String.valueOf(listShops.get(position));
-                Intent intent = new Intent(OrderActivity.this, ShopDetailActivity.class);
+                String shopemail = URL+String.valueOf(listShops.get(position).getemail());
+                Intent intent = new Intent(OrderActivity.this, MealListActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("SHOPNAME", shopname);
+                bundle.putString("shopemail", shopemail);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
@@ -110,6 +109,7 @@ public class OrderActivity extends AppCompatActivity {
                     shop.setName(((JSONObject) jsonObis.get(i)).getString("shopName"));
                     shop.setTel(((JSONObject) jsonObis.get(i)).getString("phone"));
                     shop.setImgURL(((JSONObject) jsonObis.get(i)).getString("photo"));
+                    shop.setemail(((JSONObject) jsonObis.get(i)).getString("email"));
                     shop.setImg(loadImageFromURL(shop.getImgURL()));
                     listShops.add(shop);
                 }

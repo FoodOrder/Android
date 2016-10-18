@@ -12,7 +12,6 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".LoginActivity"
-
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,7 +43,11 @@
             android:name=".AroundActivity"
             android:label="@string/title_activity_around"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ShopDetailActivity"></activity>
+        <activity android:name=".MealListActivity" />
+        <activity
+            android:name=".CartlistActivity"
+            android:label="@string/title_activity_cartlist"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

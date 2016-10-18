@@ -1,6 +1,6 @@
 package sammy.myapplication;
 
-import android.graphics.Bitmap;
+
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 
@@ -12,6 +12,8 @@ import java.util.Date;
 public class Shop {
 
     private int id;
+
+    private String email;
 
     private String name;
 
@@ -30,6 +32,15 @@ public class Shop {
     public void setId(int id) {
         this.id = id;
     }
+
+    public String getemail() {
+        return email;
+    }
+
+    public void setemail(String email) {
+        this.email = email;
+    }
+
 
     public String getName() {
         return name;

@@ -53,10 +53,10 @@
 
                 android:textColor="#FF888888"
                 android:layout_marginLeft="30dp"
-                android:text="New Text"
                 android:textSize="20sp"
-                android:id="@+id/URL"
-                android:layout_weight="0.05" />
+                android:id="@+id/tv_email"
+                android:layout_weight="0.05"
+                android:text="123" />
 
         </LinearLayout>
     </LinearLayout>

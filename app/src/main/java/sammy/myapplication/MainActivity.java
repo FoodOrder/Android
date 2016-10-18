@@ -56,6 +56,12 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
+        if(id == R.id.action_cart) {
+            Intent intent = new Intent();
+            intent.setClass(this, CartlistActivity.class);
+            startActivity(intent);
+        }
+
        if(id == R.id.action_login) {
             Intent intent = new Intent();
             intent.setClass(this, LoginActivity.class);

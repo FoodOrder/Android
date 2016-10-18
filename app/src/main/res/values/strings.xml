@@ -8,4 +8,5 @@
     <string name="title_activity_leaderboard">LeaderboardActivity</string>
     <string name="title_activity_ramdom">RamdomActivity</string>
     <string name="title_activity_around">AroundActivity</string>
+    <string name="title_activity_cartlist">CartlistActivity</string>
 </resources>
