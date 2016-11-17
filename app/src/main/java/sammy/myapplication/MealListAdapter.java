@@ -1,8 +1,6 @@
 package sammy.myapplication;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,13 +21,17 @@ public class MealListAdapter extends ArrayAdapter<Meal> {
         super(context, 0, objects);
     }
 
+    public ArrayList<Cart> getCart() {
+        return listCart;
+    }
+
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
          NumberPicker numPicker;
         final Meal meal = getItem(position);
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.meunview, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.format_meunview, parent, false);
         }
 
         TextView mealname = (TextView) convertView.findViewById(R.id.mealname);
@@ -37,13 +39,13 @@ public class MealListAdapter extends ArrayAdapter<Meal> {
         mealname.setText(meal.getMealname());
         mealprice.setText("$"+String.valueOf(meal.getMealprice()));
 
-        numPicker=(NumberPicker) convertView.findViewById(R.id.numberPicker);
+    /*    numPicker=(NumberPicker) convertView.findViewById(R.id.numberPicker);
         numPicker.setMaxValue(20);
         numPicker.setMinValue(0);
         numPicker.setValue(0);
         numPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             public void onValueChange(NumberPicker view, int oldValue, int newValue) {
-             /*   Cart cart = new Cart();
+                Cart cart = new Cart();
                 cart.setFoodid(meal.getMealid());
                 cart.setFoodamout(newValue);
                 for (int i = 0; i < listCart.size(); i++) {
@@ -52,12 +54,10 @@ public class MealListAdapter extends ArrayAdapter<Meal> {
                     } else {
                         listCart.add(cart);
                     }
-                }*/
-
-                // tv.setText("pick number is " + String.valueOf(newValue));
+                }
 
             }
-        });
+        });*/
 
 
         return convertView;

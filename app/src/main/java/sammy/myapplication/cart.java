@@ -1,9 +1,11 @@
 package sammy.myapplication;
 
+import java.io.Serializable;
+
 /**
  * Created by Lin on 2016/10/17.
  */
-public class Cart {
+public class Cart implements Serializable{
 
    private String foodid;
 

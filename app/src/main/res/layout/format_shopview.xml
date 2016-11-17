@@ -39,7 +39,7 @@
             <TextView
                 android:layout_width="180dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="30dp"
                 android:text="New Text"
                 android:textColor="#FF888888"
@@ -56,7 +56,7 @@
                 android:textSize="20sp"
                 android:id="@+id/tv_email"
                 android:layout_weight="0.05"
-                android:text="123" />
+                android:text="進入點餐" />
 
         </LinearLayout>
     </LinearLayout>
