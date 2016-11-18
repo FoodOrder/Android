@@ -33,15 +33,14 @@ public class ShopListAdapter extends ArrayAdapter<Shop> {
         ImageView ivshop =(ImageView)convertView.findViewById(R.id.shopview);
         TextView tvShopName = (TextView)convertView.findViewById(R.id.tv_shop_name);
         TextView tvPhone = (TextView)convertView.findViewById(R.id.tv_phone);
-        TextView tvEmail = (TextView)convertView.findViewById(R.id.tv_email);
-       // tvEmail.setText(shop.getemail());
+        //TextView tvEmail = (TextView)convertView.findViewById(R.id.tv_email);
         tvShopName.setText(shop.getName());
         tvPhone.setText(shop.getTel());
         ivshop.setImageDrawable(shop.getImg());
 
         return convertView;
     }
-    private Drawable loadImageFromURL(String url) {
+  /* private Drawable loadImageFromURL(String url) {
         try {
             InputStream is = (InputStream) new URL(url).getContent();
             Drawable draw = Drawable.createFromStream(is, "src");
@@ -49,6 +48,6 @@ public class ShopListAdapter extends ArrayAdapter<Shop> {
         } catch (Exception e) {
             return null;
         }
-    }
+    }*/
 
 }

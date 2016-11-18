@@ -123,7 +123,7 @@ public class LoginActivity extends AppCompatActivity {
                     HashMap<String, String> postDataParams = new HashMap<>();
                     postDataParams.put("email", email);
                     postDataParams.put("password", pass);
-                    postDataParams.put("userName", "sammy");
+                  //  postDataParams.put("userName", "sammy");
 
                     OutputStream os = conn.getOutputStream();
                     BufferedWriter writer = new BufferedWriter(

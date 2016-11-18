@@ -10,15 +10,25 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    private ImageView GoToOrderButton;
+    private ImageView SearchOrder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        GoToOrderButton =(ImageView) findViewById(R.id.buttonorder);
+        GoToOrderButton.setImageResource(R.drawable.store);
+        SearchOrder = (ImageView)findViewById(R.id.searchorder);
+        SearchOrder.setImageResource(R.drawable.list);
 
     }
     //OrderActivity view change

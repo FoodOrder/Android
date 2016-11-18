@@ -14,7 +14,7 @@
                 android:text="Large Text"
                 android:id="@+id/mealname"
                 android:layout_column="0"
-                 />
+                android:textSize="30dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -23,6 +23,6 @@
                 android:text="Large Text"
                 android:layout_column="4"
                 android:id="@+id/mealprice"
-                 />
+                android:textSize="30dp" />
         </TableRow>
     </TableLayout>

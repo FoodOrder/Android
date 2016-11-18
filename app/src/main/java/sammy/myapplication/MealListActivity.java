@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -22,8 +23,8 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class MealListActivity extends AppCompatActivity {
+    static String URL = "http://140.134.26.71:58080/android-backend/webapi/menu/id/";
     static String Shopemail;
-
     private MealListAdapter MealListAdapter;
 
     private ArrayList<Meal> listMenu = new ArrayList<Meal>();
@@ -41,23 +42,33 @@ public class MealListActivity extends AppCompatActivity {
 
     };
 
+    AdapterView.OnItemClickListener onClickListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        }
+    };
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_meal_list);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        LayoutInflater inflater =  getLayoutInflater();
+
+        final View view1 = inflater.inflate(R.layout.activity_meal_list, null);
+
+        setContentView(view1);
+
+        FloatingActionButton fab = (FloatingActionButton) view1.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             //   Intent intent = new Intent();
-               // intent.putExtra("cartlist",listMenu);
-                Intent it = new Intent(MealListActivity.this, CartlistActivity.class);
-                it.putExtra("cartlist", MealListAdapter.getCart());
-                Snackbar.make(view, "加至購物車", Snackbar.LENGTH_LONG)
+                Intent intent = new Intent(MealListActivity.this, CartlistActivity.class);
+                startActivity(intent);
+                Snackbar.make(view, "前往購物車", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
+
 
         getbundle();
         ListView mealListView = (ListView) this.findViewById(R.id.menulistView);
@@ -65,26 +76,24 @@ public class MealListActivity extends AppCompatActivity {
         mealListView.setAdapter(MealListAdapter);
 
 
-      /*  mealListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String shopemail = URL + String.valueOf(listMenu.get(position).getemail());
-                Intent intent = new Intent(OrderActivity.this, MealListActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("shopemail", shopemail);
-                intent.putExtras(bundle);
-                startActivity(intent);
-      */
-
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
                         GetShopDetail();
                     }
                 }).start();
-           //       Intent it = new Intent(MealListActivity.this, CartlistActivity.class);
-           //     it.putExtra("cartlist", MealListAdapter.getCart());
 
+        mealListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String fooddetail = URL+String.valueOf(listMenu.get(position).getMealid());
+                Intent intent = new Intent(MealListActivity.this, AddFoodActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("fooddetail", fooddetail);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
 
             }
 

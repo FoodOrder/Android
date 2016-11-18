@@ -27,7 +27,7 @@ public class MealListAdapter extends ArrayAdapter<Meal> {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-         NumberPicker numPicker;
+
         final Meal meal = getItem(position);
 
         if (convertView == null) {
@@ -37,27 +37,7 @@ public class MealListAdapter extends ArrayAdapter<Meal> {
         TextView mealname = (TextView) convertView.findViewById(R.id.mealname);
         TextView mealprice = (TextView) convertView.findViewById(R.id.mealprice);
         mealname.setText(meal.getMealname());
-        mealprice.setText("$"+String.valueOf(meal.getMealprice()));
-
-    /*    numPicker=(NumberPicker) convertView.findViewById(R.id.numberPicker);
-        numPicker.setMaxValue(20);
-        numPicker.setMinValue(0);
-        numPicker.setValue(0);
-        numPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
-            public void onValueChange(NumberPicker view, int oldValue, int newValue) {
-                Cart cart = new Cart();
-                cart.setFoodid(meal.getMealid());
-                cart.setFoodamout(newValue);
-                for (int i = 0; i < listCart.size(); i++) {
-                    if (listCart.get(i).getFoodid() == meal.getMealid()) {
-                        listCart.set(i, cart);
-                    } else {
-                        listCart.add(cart);
-                    }
-                }
-
-            }
-        });*/
+        mealprice.setText("$ "+String.valueOf(meal.getMealprice()));
 
 
         return convertView;

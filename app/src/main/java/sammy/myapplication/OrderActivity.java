@@ -24,7 +24,7 @@ import android.widget.AdapterView;
 
 
 public class OrderActivity extends AppCompatActivity {
-    static String URL = "http://140.134.26.71:58080/android-backend/webapi/menu/";
+    static String URL = "http://140.134.26.71:58080/android-backend/webapi/menu/email/";
     private static final String SERVICE_URL = "http://140.134.26.71:58080/android-backend/webapi/shop/list";
     private static final int UPDATE_SHOP_LIST = 1;
     private ShopListAdapter shopListAdapter;

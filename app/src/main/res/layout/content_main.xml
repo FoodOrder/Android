@@ -1,51 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="sammy.myapplication.MainActivity"
-    tools:showIn="@layout/activity_main">
+    tools:showIn="@layout/activity_main"
+    android:weightSum="1">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="訂餐"
-        android:id="@+id/orderbutton"
-        android:onClick="GotoOrderAct"
-        android:layout_gravity="center"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="88dp" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="165dp"
+        android:layout_weight="0.03"
+        android:weightSum="1">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="排行榜"
-        android:id="@+id/button3"
-        android:layout_alignTop="@+id/orderbutton"
-        android:layout_alignParentEnd="true"
-        android:layout_alignBottom="@+id/orderbutton" />
+        <ImageView
+            android:layout_width="160dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="160dp"
+            android:id="@+id/buttonorder"
+            android:onClick="GotoOrderAct"
+            android:layout_weight="0.29" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="周遭"
-        android:id="@+id/button4"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="122dp" />
+        <ImageView
+            android:layout_width="160dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="160dp"
+            android:id="@+id/searchorder" />
+    </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="隨機"
-        android:id="@+id/button5"
-        android:layout_alignTop="@+id/button4"
-        android:layout_alignStart="@+id/button3" />
-</RelativeLayout>
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.03">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="店家列表"
+            android:id="@+id/textView2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="95dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="訂單查詢"
+            android:id="@+id/textView3" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -6,8 +6,8 @@
 
     <application
         android:allowBackup="true"
-        android:label="Super Menu"
         android:icon="@drawable/meal"
+        android:label="Super Menu"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -47,11 +47,14 @@
             android:name=".MealListActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".CartlistActivity"
-            android:label="@string/title_activity_cartlist"
+            android:label="訂單查詢"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AddFoodActivity"
+            android:label="@string/title_activity_add_food"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
