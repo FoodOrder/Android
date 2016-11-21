@@ -62,6 +62,8 @@ public class SignUpActivity extends AppCompatActivity {
 
     private EditText etusername;
 
+    private EditText etPhone;
+
     private EditText etEmail;
 
     private EditText etPass;
@@ -84,6 +86,7 @@ public class SignUpActivity extends AppCompatActivity {
         etEmail = (EditText)findViewById(R.id.et_email);
         etPass = (EditText)findViewById(R.id.et_pass);
         etusername = (EditText)findViewById(R.id.et_username);
+        etPhone = (EditText)findViewById(R.id.et_phone);
 
         btnSignUp = (Button) findViewById(R.id.btn_signup);
 
@@ -101,6 +104,8 @@ public class SignUpActivity extends AppCompatActivity {
         final String email = etEmail.getText().toString();
         final String pass = etPass.getText().toString();
         final String username = etusername.getText().toString();
+        final String phone = etPhone.getText().toString();
+
 
         new Thread(new Runnable(){
             @Override
@@ -120,6 +125,7 @@ public class SignUpActivity extends AppCompatActivity {
                     postDataParams.put("email", email);
                     postDataParams.put("password", pass);
                     postDataParams.put("userName", username);
+                    postDataParams.put("phone", phone);
 
                     OutputStream os = conn.getOutputStream();
                     BufferedWriter writer = new BufferedWriter(

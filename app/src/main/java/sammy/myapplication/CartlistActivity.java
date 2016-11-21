@@ -5,8 +5,6 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -43,80 +41,50 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class CartlistActivity extends AppCompatActivity {
     private static final String ADDURL="http://140.134.26.71:58080/android-backend/webapi/order/addOrder";
-  //  private ArrayList<item> foodlist = new ArrayList<item>();
- /*   public static final String KEY = "com.my.package.app";
-    int foodid;
-    int foodprice;
-    int foodnumber;
-    Gson gson1 = new Gson();
-    Gson gson2 = new Gson();*/
-
+    ArrayList<Meal> Orderlist = new ArrayList<Meal>();
+    data Orderdata =new data();
+    ArrayList<item> Orderitem = new ArrayList<item>();
+    Gson gson = new Gson();
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cartlist);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        System.out.print("kfofoijfoijcijfioqwjfoi");
-        send();
-        System.out.print("ookokpokopkk");
+        getbundle();
+
+  /*      for (int i=0 ; i < Orderlist.size() ; i++){
+            Orderitem.get(i).setFoodId(Orderlist.get(i).getMealid());
+            Orderitem.get(i).setAmount(Orderlist.get(i).getMealnumber());
+        }*/
+        Orderdata.setMembers(Orderitem);
+        gson.toJson(Orderdata);
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                //  AsyncTaskRunner postReq = new AsyncTaskRunner();
-                //   postReq.doInBackground();
-                // postReq.execute("start");
-                System.out.print("kfofoijfoijcijfioqwjfoi");
-                send();
-                System.out.print("ookokpokopkk");
-
-                Snackbar.make(view, "訂單已送達 感謝使用", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "訂單已清除", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
 
 
-   /*     SharedPreferences spref = getApplication().getSharedPreferences(KEY, Context.MODE_PRIVATE);
-
-        foodprice = spref.getInt("foodid", 0);
-
-        System.out.println("foodid" + foodid);
-
-        foodprice = spref.getInt("foodprice", 0);
-
-            System.out.println("foodprice"+foodprice);
-
-         foodnumber = spref.getInt("foodnumber", 0);
-
-            System.out.println("foodnumber = " + foodnumber);
-
-        item item1 = new item();
-
-        item1.setAmount(foodnumber);
-        item1.setFoodId(foodid);
-
-        foodlist.add(item1);
-
-        data data = new data();
-        data.setMembers(foodlist);
-
-        gson1.toJson(data);
 
 
 
 
     }
     class item{
-        int foodId;
+        String foodId;
 
-        public int getFoodId() {
+        public String getFoodId() {
             return foodId;
         }
 
-        public void setFoodId(int foodId) {
+        public void setFoodId(String foodId) {
             this.foodId = foodId;
         }
 
@@ -144,9 +112,19 @@ public class CartlistActivity extends AppCompatActivity {
         @SerializedName("items")
         List<item> members = new ArrayList<item>();
 
-*/
+
+    }
+
+    void getbundle() {
+        Intent intent = this.getIntent();
+        Orderlist = (ArrayList<Meal>)intent.getSerializableExtra("FinalOrder");
+        for (int i=0 ; i < Orderlist.size() ; i++){
+            Orderitem.get(i).setFoodId(Orderlist.get(i).getMealid());
+            Orderitem.get(i).setAmount(Orderlist.get(i).getMealnumber());
+        }
     }
     void send(){
+        final Gson fingson = gson;
     new Thread(new Runnable(){
         @Override
         public void run() {
@@ -158,16 +136,13 @@ public class CartlistActivity extends AppCompatActivity {
                 conn.setRequestMethod("POST");
                 conn.setDoInput(true);
                 conn.setDoOutput(true);
-                System.out.print("32403284239048918429038402");
                 JSONObject cred = new JSONObject();
-                cred.put("userId", "10");
-                System.out.print("1111111111111111111111");
+                cred.put("sfd",fingson);
+                cred.putOpt("sadas",fingson);
                 DataOutputStream localDataOutputStream = new DataOutputStream(conn.getOutputStream());
                 localDataOutputStream.writeBytes(cred.toString());
                 localDataOutputStream.flush();
                 localDataOutputStream.close();
-
-
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -181,50 +156,6 @@ public class CartlistActivity extends AppCompatActivity {
 
 
 
-/*private class AsyncTaskRunner extends AsyncTask<String,String,String>{
-        @Override
-        protected String doInBackground(String... params) {
-            try {
-                URL object=new URL("http://140.134.26.71:58080/android-backend/webapi/order/addOrder");
-
-                HttpURLConnection con = (HttpURLConnection) object.openConnection();
-                con.setReadTimeout(15000);
-                con.setConnectTimeout(15000);
-                con.setDoOutput(true);
-                con.setDoInput(true);
-                //con.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-                con.setRequestMethod("POST");
-
-                System.out.print("32403284239048918429038402");
-                JSONObject cred = new JSONObject();
-                cred.put("userId","10");
-                System.out.print("1111111111111111111111");
-                DataOutputStream localDataOutputStream = new DataOutputStream(con.getOutputStream());
-                localDataOutputStream.writeBytes(cred.toString());
-                localDataOutputStream.flush();
-                localDataOutputStream.close();
-            }
-            catch (Exception e){
-                Log.v("ErrorAPP",e.toString());
-            }
-            return "";
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected void onProgressUpdate(String... values) {
-            super.onProgressUpdate(values);
-        }
-    }*/
 
 }
 

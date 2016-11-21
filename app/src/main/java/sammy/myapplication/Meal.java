@@ -1,13 +1,19 @@
 package sammy.myapplication;
 
+import java.io.Serializable;
+
 /**
  * Created by Lin on 2016/10/7.
  */
-public class Meal {
+public class Meal implements Serializable{
 
     private String mealid;
 
     private String mealname;
+
+    private int mealprice;
+
+    private int mealnumber = 0;
 
     public String getMealid() {
         return mealid;
@@ -33,17 +39,13 @@ public class Meal {
         this.mealprice = mealprice;
     }
 
-    public int getMealnumber() {
-        return mealnumber;
-    }
+    public int getMealnumber() {return mealnumber; }
 
     public void setMealnumber(int mealnumber) {
         this.mealnumber = mealnumber;
     }
 
-    private int mealprice;
 
-    private int mealnumber;
 
 
 

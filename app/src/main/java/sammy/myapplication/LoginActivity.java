@@ -1,6 +1,8 @@
 package sammy.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -35,6 +37,7 @@ import java.util.Map;
 import javax.net.ssl.HttpsURLConnection;
 
 public class LoginActivity extends AppCompatActivity {
+    public static final String KEY = "com.my.package.app";
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
@@ -123,7 +126,6 @@ public class LoginActivity extends AppCompatActivity {
                     HashMap<String, String> postDataParams = new HashMap<>();
                     postDataParams.put("email", email);
                     postDataParams.put("password", pass);
-                  //  postDataParams.put("userName", "sammy");
 
                     OutputStream os = conn.getOutputStream();
                     BufferedWriter writer = new BufferedWriter(
@@ -161,6 +163,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private void successornot(){
         if(getSORN().equalsIgnoreCase(success)){
+            SharedPreferences spref = getApplication().getSharedPreferences(KEY, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = spref.edit();
+            editor.putString("email",loginEmail.getText().toString());
+            editor.commit();
             Toast.makeText(LoginActivity.this,"登入成功",Toast.LENGTH_LONG).show();
             Intent intent = new Intent();
             intent.setClass(LoginActivity.this, MainActivity.class);

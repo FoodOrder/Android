@@ -12,4 +12,5 @@
     <string name="title_activity_cartlist_adapter">CartlistAdapter</string>
     <color name="yellow">#ffcb00</color>
     <string name="title_activity_add_food">AddFoodActivity</string>
+    <string name="title_activity_account">AccountActivity</string>
 </resources>

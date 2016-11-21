@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="sammy.myapplication.MainActivity">
     <item
-        android:id="@+id/action_login"
+        android:id="@+id/action_account"
         android:orderInCategory="100"
-        android:title="登入"
+        android:title="帳戶"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_signup"

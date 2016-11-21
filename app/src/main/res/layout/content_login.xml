@@ -57,7 +57,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="還沒有帳號嗎？ 點這裡哥哥帶你去註冊喔"
+                android:text="還沒有帳號嗎？ 點這裡帶你去註冊喔"
                 android:onClick="GotoSignUpAct"
                 android:id="@+id/btn_go_signup"
                 android:background="#00000000"
