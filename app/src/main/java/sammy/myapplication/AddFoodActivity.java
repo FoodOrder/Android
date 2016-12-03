@@ -38,7 +38,7 @@ public class AddFoodActivity extends AppCompatActivity {
                 case UPDATE_MEAL_LIST: {
                     updatefoodList();
                     break;
-                }
+                }//asd
             }
         }
     };
