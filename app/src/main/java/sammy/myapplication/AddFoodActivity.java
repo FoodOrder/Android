@@ -26,7 +26,8 @@ public class AddFoodActivity extends AppCompatActivity {
     String orderid;
     String foodname;
     int foodprice;
-    private EditText foodamt;
+    private EditText foodamt ;
+
     static String URL1;
     Drawable URL2;
     private Meal mItem;
@@ -48,6 +49,7 @@ public class AddFoodActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);;
         getbundle();
+//        System.out.println(foodamt.getText().toString());
         foodamt = (EditText)findViewById(R.id.foodamt);
         TextView foodname1 = (TextView)findViewById(R.id.foodname1);
         TextView foodprice1 = (TextView)findViewById(R.id.foodprice1);
@@ -57,7 +59,8 @@ public class AddFoodActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                System.out.println(foodamt.getText().toString());
+                Log.v("ANDY",foodamt.getText().toString());
               onBackPressed();
 
                 Snackbar.make(view, "加入購物車", Snackbar.LENGTH_LONG)
@@ -79,8 +82,14 @@ public class AddFoodActivity extends AppCompatActivity {
     }
     public void onBackPressed() {
         Intent intent = new Intent();
-
-        intent.putExtra("UpdateAmount", Integer.valueOf(foodamt.getText().toString()));
+        Log.v("ANDY",foodamt.getText().toString());
+        if ((foodamt.getText().toString()) != null){
+            Log.v("ANDY",foodamt.getText().toString());
+            System.out.println(foodamt.getText().toString());
+            intent.putExtra("UpdateAmount", Integer.valueOf(foodamt.getText().toString()));
+        }else {
+            intent.putExtra("UpdateAmount", 0);
+        }
         Log.v("food1", foodamt.getText().toString());
         setResult(MealListActivity.GET_AMOUNT, intent);
         this.finish();

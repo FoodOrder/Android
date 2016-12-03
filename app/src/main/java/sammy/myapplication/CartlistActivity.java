@@ -66,6 +66,8 @@ public class CartlistActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                send();
                 Snackbar.make(view, "訂單已清除", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -138,7 +140,8 @@ public class CartlistActivity extends AppCompatActivity {
                 conn.setDoOutput(true);
                 JSONObject cred = new JSONObject();
                 cred.put("sfd",fingson);
-                cred.putOpt("sadas",fingson);
+                cred.putOpt("sadas", fingson);
+                Log.v("Andy", cred.toString());
                 DataOutputStream localDataOutputStream = new DataOutputStream(conn.getOutputStream());
                 localDataOutputStream.writeBytes(cred.toString());
                 localDataOutputStream.flush();
