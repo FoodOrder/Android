@@ -83,12 +83,13 @@ public class AddFoodActivity extends AppCompatActivity {
     public void onBackPressed() {
         Intent intent = new Intent();
         Log.v("ANDY",foodamt.getText().toString());
-        if ((foodamt.getText().toString()) != null){
+        if ((foodamt.getText().toString()).equals("")){
+            intent.putExtra("UpdateAmount", 0);
+        }else {
             Log.v("ANDY",foodamt.getText().toString());
             System.out.println(foodamt.getText().toString());
             intent.putExtra("UpdateAmount", Integer.valueOf(foodamt.getText().toString()));
-        }else {
-            intent.putExtra("UpdateAmount", 0);
+
         }
         Log.v("food1", foodamt.getText().toString());
         setResult(MealListActivity.GET_AMOUNT, intent);
