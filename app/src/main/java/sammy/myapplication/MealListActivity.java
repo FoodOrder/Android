@@ -195,7 +195,6 @@ public class MealListActivity extends AppCompatActivity {
      protected void onActivityResult(int requestCode, int resultCode, Intent data){
         if(requestCode == GET_AMOUNT){
             int updateAmount = data.getIntExtra("UpdateAmount", 0);
-            Log.v("food2",String.valueOf(updateAmount));
             if(updateAmount != mSelectedItem.getMealnumber()){
                 mSelectedItem.setMealnumber(updateAmount);
                 MealListAdapter.notifyDataSetChanged();

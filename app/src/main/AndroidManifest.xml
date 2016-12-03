@@ -36,7 +36,7 @@
             android:label="@string/title_activity_leaderboard"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".RamdomActivity"
+            android:name=".OrderCheckActivity"
             android:label="@string/title_activity_ramdom"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
