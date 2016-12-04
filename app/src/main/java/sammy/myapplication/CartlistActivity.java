@@ -3,7 +3,6 @@ package sammy.myapplication;
 import android.content.Context;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,10 +14,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.DataOutputStream;
@@ -36,7 +33,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-
 import javax.net.ssl.HttpsURLConnection;
 
 public class CartlistActivity extends AppCompatActivity {
@@ -54,10 +50,10 @@ public class CartlistActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getbundle();
 
-  /*      for (int i=0 ; i < Orderlist.size() ; i++){
+        for (int i=0 ; i < Orderlist.size() ; i++){
             Orderitem.get(i).setFoodId(Orderlist.get(i).getMealid());
             Orderitem.get(i).setAmount(Orderlist.get(i).getMealnumber());
-        }*/
+        }
         Orderdata.setMembers(Orderitem);
         gson.toJson(Orderdata);
 
