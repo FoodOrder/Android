@@ -25,7 +25,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"
-            android:label="逢甲美食"
+            android:label="Super Menu"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".OrderActivity"

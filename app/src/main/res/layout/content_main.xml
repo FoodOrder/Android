@@ -7,55 +7,103 @@
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="sammy.myapplication.MainActivity"
-    tools:showIn="@layout/activity_main"
-    android:weightSum="1">
+    tools:showIn="@layout/activity_main">
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="165dp"
-        android:layout_weight="0.03"
-        android:weightSum="1">
+        android:layout_height="180dp"
+        android:layout_marginTop="30dp">
 
         <ImageView
-            android:layout_width="160dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:layout_height="160dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="0.5"
             android:id="@+id/buttonorder"
-            android:onClick="GotoOrderAct"
-            android:layout_weight="0.29" />
+            android:onClick="GotoOrderAct"/>
 
         <ImageView
-            android:layout_width="160dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="10dp"
-            android:layout_height="160dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="0.5"
             android:id="@+id/searchorder" />
+
     </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.03">
+        android:layout_gravity="center_horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_marginLeft="50dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="0.5"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="店家列表"
-            android:id="@+id/textView2" />
+            android:textAlignment="center"
+            />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="95dp"
+            android:layout_weight="0.5"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="訂單查詢"
-            android:id="@+id/textView3" />
+            android:textAlignment="center"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginTop="30dp">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="0.5"
+            android:id="@+id/searchNearShop"
+
+            />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="0.5"
+            android:id="@+id/service" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="附近店家"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="客戶服務"
+            android:textAlignment="center"
+            />
     </LinearLayout>
 
 </LinearLayout>

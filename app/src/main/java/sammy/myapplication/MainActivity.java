@@ -16,6 +16,9 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageView GoToOrderButton;
     private ImageView SearchOrder;
+
+    private ImageView ivSearchNearShop;
+    private ImageView ivCustomerService;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,10 +27,14 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         GoToOrderButton =(ImageView) findViewById(R.id.buttonorder);
-        GoToOrderButton.setImageResource(R.drawable.store);
+        GoToOrderButton.setImageResource(R.drawable.restaurant);
         SearchOrder = (ImageView)findViewById(R.id.searchorder);
-        SearchOrder.setImageResource(R.drawable.list);
+        SearchOrder.setImageResource(R.drawable.padnote);
 
+        ivSearchNearShop = (ImageView)findViewById(R.id.searchNearShop);
+        ivCustomerService = (ImageView)findViewById(R.id.service);
+        ivSearchNearShop.setImageResource(R.drawable.nearshop);
+        ivCustomerService.setImageResource(R.drawable.cooker);
     }
     //OrderActivity view change
      public void GotoOrderAct(View v) {
