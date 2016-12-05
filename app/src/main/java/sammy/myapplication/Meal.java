@@ -1,5 +1,8 @@
 package sammy.myapplication;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.Serializable;
 
 /**
@@ -46,8 +49,20 @@ public class Meal implements Serializable{
     }
 
 
+    public JSONObject getJSONObject(){
+        JSONObject obj = new JSONObject();
+        try{
 
+                obj.put("Mealname", mealid);
+                obj.put("MealAmout",mealnumber);
 
-
+            } catch (JSONException e1) {
+            e1.printStackTrace();
+        }
+     return obj;
+    }
 
 }
+
+
+

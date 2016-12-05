@@ -67,9 +67,11 @@ public class MealListActivity extends AppCompatActivity {
                 Intent intent = new Intent(MealListActivity.this, CartlistActivity.class);
                 intent.setClass(MealListActivity.this,CartlistActivity.class);
                 intent.putExtra("FinalOrder", listMenu);
+               // listMenu.clear();
                 startActivity(intent);
                 Snackbar.make(view, "前往購物車", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                listMenu.clear();
             }
         });
 
