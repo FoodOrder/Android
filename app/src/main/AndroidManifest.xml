@@ -14,10 +14,10 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".LoginActivity"
+            android:label="Super Menu"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -31,7 +31,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".OrderActivity"
-            android:label="菜單"
+            android:label="Super Menu"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".LeaderboardActivity"
@@ -47,7 +47,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MealListActivity"
-            android:label="@string/app_name"
+            android:label="餐點列表"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".CartlistActivity"
@@ -55,11 +55,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AddFoodActivity"
-            android:label="@string/title_activity_add_food"
+            android:label="餐點簡介"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AccountActivity"
-            android:label="@string/title_activity_account"
+            android:label="帳戶資訊"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

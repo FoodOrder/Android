@@ -34,7 +34,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="15dp"
                 android:text="New Text"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:id="@+id/tv_shop_name" />
 
             <TextView

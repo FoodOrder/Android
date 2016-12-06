@@ -22,9 +22,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
@@ -33,6 +35,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import javax.net.ssl.HttpsURLConnection;
 
 public class CartlistActivity extends AppCompatActivity {
     private static final String ADDURL = "http://140.134.26.71:58080/android-backend/webapi/order/addOrder";
@@ -126,10 +130,10 @@ public class CartlistActivity extends AppCompatActivity {
         JSONObject obj = new JSONObject();
         try{
             for (int i = 0; i < Orderlist.size(); i++) {
-            //    if(Orderlist.get(i).getMealnumber()!=0){
-                    obj.put("Mealname",Orderlist.get(i).getMealid());
-                    obj.put("MealAmout",Orderlist.get(i).getMealnumber());
-            //    }
+                if(Orderlist.get(i).getMealnumber()!=0){
+                    obj.put("Mealname", Orderlist.get(i).getMealid());
+                    obj.put("MealAmout", Orderlist.get(i).getMealnumber());
+                }
                 System.out.println(Orderlist.get(i).getMealid());
                 System.out.println(Orderlist.get(i).getMealnumber());
             }
@@ -160,6 +164,7 @@ public class CartlistActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
+                    String response = "";
                     URL url = new URL(ADDURL);
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setReadTimeout(15000);
@@ -169,10 +174,9 @@ public class CartlistActivity extends AppCompatActivity {
                     conn.setDoOutput(true);
                     //JSONObject cred = new JSONObject();
 
-
-                    HashMap<String, String> postDataParams = new HashMap<>();
-                    postDataParams.put("Id", "10");
-                    postDataParams.put("shopId", "1");
+                //    HashMap<String, String> postDataParams = new HashMap<>();
+                  //  postDataParams.put("Id", "10");
+                    //postDataParams.put("shopId", "1");
 
                     JSONObject ooo = new JSONObject();
                     ooo.put("userId",id);
@@ -185,15 +189,29 @@ public class CartlistActivity extends AppCompatActivity {
                     OutputStream os = conn.getOutputStream();
                     BufferedWriter writer = new BufferedWriter(
                             new OutputStreamWriter(os, "UTF-8"));
-                    writer.write(String.valueOf(postDataParams));
-
+                  //  writer.write(String.valueOf(postDataParams));
                     // Log.v("Andy", cred.toString());
-                    DataOutputStream localDataOutputStream = new DataOutputStream(conn.getOutputStream());
-                    localDataOutputStream.writeBytes(jsonArray.toString());
-                    localDataOutputStream.writeBytes(ooo.toString());
+                    writer.write(ooo.toString());
+                    writer.flush();
+                    writer.close();
+                    os.close();
+                  //  DataOutputStream localDataOutputStream = new DataOutputStream(conn.getOutputStream());
+                //    localDataOutputStream.writeBytes(jsonArray.toString());
+                ///    localDataOutputStream.writeBytes(ooo.toString());
                     System.out.println(ooo.toString());
-                    localDataOutputStream.flush();
-                    localDataOutputStream.close();
+              //      localDataOutputStream.flush();
+                //    localDataOutputStream.close();
+                    int responseCode=conn.getResponseCode();
+                    if (responseCode == HttpsURLConnection.HTTP_OK) {
+                        String line;
+                        BufferedReader br=new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                        while ((line=br.readLine()) != null) {
+                            response+=line;
+                        }
+                    }
+                    else {
+                        response="";
+                    }
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
