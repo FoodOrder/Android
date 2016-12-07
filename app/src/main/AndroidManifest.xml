@@ -31,7 +31,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".OrderActivity"
-            android:label="Super Menu"
+            android:label="店家"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".LeaderboardActivity"

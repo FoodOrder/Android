@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="店家列表"
+            android:text="店家"
             android:textAlignment="center"
             />
 
@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="訂單查詢"
+            android:text="訂單"
             android:textAlignment="center"
             />
     </LinearLayout>
