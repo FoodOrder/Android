@@ -28,7 +28,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:layout_weight="0.5"
-            android:id="@+id/searchorder" />
+            android:id="@+id/searchorder"
+            />
 
     </LinearLayout>
 
@@ -43,16 +44,16 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="店家列表"
+            android:text="店家"
             android:textAlignment="center"
-            />
+            android:id="@+id/textView2" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="訂單查詢"
+            android:text="訂單"
             android:textAlignment="center"
             />
     </LinearLayout>

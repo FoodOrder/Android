@@ -27,19 +27,32 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         GoToOrderButton =(ImageView) findViewById(R.id.buttonorder);
-        GoToOrderButton.setImageResource(R.drawable.restaurant);
+        GoToOrderButton.setImageResource(R.drawable.store);
         SearchOrder = (ImageView)findViewById(R.id.searchorder);
-        SearchOrder.setImageResource(R.drawable.padnote);
+        SearchOrder.setImageResource(R.drawable.order);
 
         ivSearchNearShop = (ImageView)findViewById(R.id.searchNearShop);
         ivCustomerService = (ImageView)findViewById(R.id.service);
         ivSearchNearShop.setImageResource(R.drawable.nearshop);
-        ivCustomerService.setImageResource(R.drawable.cooker);
+        ivCustomerService.setImageResource(R.drawable.service);
     }
     //OrderActivity view change
      public void GotoOrderAct(View v) {
         Intent intent = new Intent();
         intent.setClass(MainActivity.this, OrderActivity.class);
+        startActivity(intent);
+
+    }
+    //OrderCheckActivity view change
+    public void GotoOrderCheckAct(View v) {
+        SharedPreferences spref = getApplication().getSharedPreferences(KEY, Context.MODE_PRIVATE);
+        String URL= "http://140.134.26.71:58080/android-backend/webapi/user/email/";
+        String email= URL+spref.getString("email", null);
+        Intent intent = new Intent();
+        Bundle bundle = new Bundle();
+        bundle.putString("EMAIL", email);
+        intent.putExtras(bundle);
+        intent.setClass(MainActivity.this, OrderCheckActivity.class);
         startActivity(intent);
 
     }

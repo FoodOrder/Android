@@ -25,48 +25,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/layout_header_">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="餐點名稱"
-                    android:id="@+id/header_food_name"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginTop="20px"
-                    android:layout_marginBottom="20px"
-                    android:textAlignment="center"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="價格"
-                    android:id="@+id/header_price"
-                    android:layout_toLeftOf="@+id/header_amount"
-                    android:layout_marginTop="20px"
-                    android:layout_marginBottom="20px"
-                    android:textAlignment="center"
-                    android:width="200px"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="數量"
-                    android:id="@+id/header_amount"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="20px"
-                    android:layout_marginBottom="20px"
-                    android:textAlignment="center"
-                    android:width="150px"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    />
-            </RelativeLayout>
         </LinearLayout>
 
         <ListView

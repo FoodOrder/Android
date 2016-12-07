@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="訂單編號"
+        android:id="@+id/id"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="20px"
+        android:layout_marginBottom="20px"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_toStartOf="@+id/time" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="狀態"
+        android:id="@+id/status"
+        android:width="150px"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20px"
+        android:layout_marginBottom="20px"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="訂餐時間"
+        android:id="@+id/time"
+        android:width="200px"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_alignBaseline="@+id/status"
+        android:layout_alignBottom="@+id/status"
+        android:layout_toStartOf="@+id/status"
+        android:layout_marginEnd="15dp" />
+
+</RelativeLayout>

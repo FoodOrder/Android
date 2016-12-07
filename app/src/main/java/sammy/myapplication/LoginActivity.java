@@ -77,7 +77,6 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setClass(LoginActivity.this, SignUpActivity.class);
         startActivity(intent);
-
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {

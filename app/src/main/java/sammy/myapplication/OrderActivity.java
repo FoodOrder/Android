@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.ListView;
 import org.json.JSONArray;
@@ -50,6 +51,8 @@ public class OrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         ListView shopListView = (ListView) this.findViewById(R.id.shoplistView);
         shopListAdapter = new ShopListAdapter(this, new ArrayList<Shop>());
@@ -67,9 +70,17 @@ public class OrderActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String shopemail = URL+String.valueOf(listShops.get(position).getemail());
+                String shopName = String.valueOf(listShops.get(position).getName());
+                String shopPic = String.valueOf(listShops.get(position).getImgURL());
+                String shopTel = String.valueOf(listShops.get(position).getTel());
+//                String shopIntr = URL+String.valueOf(listShops.get(position))
+
                 Intent intent = new Intent(OrderActivity.this, MealListActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("shopemail", shopemail);
+                bundle.putString("shopName", shopName);
+                bundle.putString("shopPic", shopPic);
+                bundle.putString("shopTel", shopTel);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }

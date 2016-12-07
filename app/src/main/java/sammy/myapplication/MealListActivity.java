@@ -1,6 +1,10 @@
 package sammy.myapplication;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
@@ -15,6 +19,7 @@ import android.widget.ListView;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import java.io.BufferedReader;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.net.HttpURLConnection;
@@ -26,6 +31,9 @@ public class MealListActivity extends AppCompatActivity {
     static final String URL = "http://140.134.26.71:58080/android-backend/webapi/menu/id/";
     static final String PICURL = "http://140.134.26.71:58080/android-backend/Menu_UploadDownloadFileServlet?id=";
     static String Shopemail;
+    static String shopName;
+    static String shopPic;
+    static String shopTel;
     public static int GET_AMOUNT = 100;
     String tempid;
     int tempamt;
@@ -152,6 +160,9 @@ public class MealListActivity extends AppCompatActivity {
     void getbundle() {
         Bundle bundle = this.getIntent().getExtras();
         Shopemail = bundle.getString("shopemail");
+        shopName = bundle.getString("shopName");
+        shopPic = bundle.getString("shopPic");
+        shopTel = bundle.getString("shopTel");
     }
 
 
@@ -173,9 +184,28 @@ public class MealListActivity extends AppCompatActivity {
             // 解析 json
             JSONArray jsonObis = new JSONArray(jsonString);
             if (jsonObis.length() > 0) {
+                Meal meal = new Meal();
+                meal.setShopName(shopName);
+                Drawable dwShopPic = loadImageFromURL(shopPic);
+                BitmapDrawable bd = (BitmapDrawable) dwShopPic;
+                Bitmap bm = bd.getBitmap();
+                int width = bm.getWidth();
+                int height = bm.getHeight();
+                Matrix matrix = new Matrix();
+                matrix.postScale(1, 10);
+                Bitmap newbm = Bitmap.createBitmap(bm, 0, 0, width, height, matrix,true);
+                BitmapDrawable bd2 = new BitmapDrawable(newbm);
+                meal.setshopPic(bd2);
+                meal.setshopTel(shopTel);
+                meal.setMealname("開水");
+                listMenu.add(meal);
+
                 for (int i = 0; i < jsonObis.length(); i++) {
-                    Meal meal = new Meal();
+                    meal=new Meal();
                     meal.setMealid(((JSONObject) jsonObis.get(i)).getString("id"));
+                    Log.i("abc","aaaaaaaaaaaaaaaaaaaa"+Shopemail);
+                    Log.i("abc",shopPic+"\n"+shopTel+"\n"+shopName);
+
                     meal.setMealname(((JSONObject) jsonObis.get(i)).getString("menuName"));
                     meal.setMealprice(((JSONObject) jsonObis.get(i)).getInt("menuPrice"));
                     listMenu.add(meal);
@@ -199,6 +229,16 @@ public class MealListActivity extends AppCompatActivity {
                 mSelectedItem.setMealnumber(updateAmount);
                 MealListAdapter.notifyDataSetChanged();
             }
+        }
+    }
+
+    private Drawable loadImageFromURL(String url) {
+        try {
+            InputStream is = (InputStream) new URL(url).getContent();
+            Drawable draw = Drawable.createFromStream(is, "src");
+            return draw;
+        } catch (Exception e) {
+            return null;
         }
     }
 

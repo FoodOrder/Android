@@ -3,7 +3,7 @@
     package="sammy.myapplication">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -18,6 +18,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -31,15 +32,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".OrderActivity"
-            android:label="Super Menu"
+            android:label="店家"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".LeaderboardActivity"
             android:label="@string/title_activity_leaderboard"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".OrderCheckActivity"
-            android:label="@string/title_activity_ramdom"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AroundActivity"
@@ -61,6 +58,10 @@
             android:name=".AccountActivity"
             android:label="帳戶資訊"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".OrderCheckActivity"
+            android:label="@string/title_activity_order_check"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
