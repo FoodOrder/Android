@@ -6,32 +6,19 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text="名稱"
         android:id="@+id/name"
         android:layout_alignParentLeft="true"
         android:layout_marginTop="20px"
         android:layout_marginBottom="20px"
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        />
+        android:layout_toStartOf="@+id/price" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/price"
-        android:layout_toLeftOf="@+id/tv_amount"
-        android:width="200px"
-        android:layout_marginTop="20px"
-        android:layout_marginBottom="20px"
-        android:textAlignment="center"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
+        android:text="數量"
         android:id="@+id/amount"
         android:width="150px"
         android:layout_alignParentRight="true"
@@ -40,5 +27,18 @@
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceSmall"
         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="價格"
+        android:id="@+id/price"
+        android:width="200px"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_alignBaseline="@+id/amount"
+        android:layout_alignBottom="@+id/amount"
+        android:layout_toStartOf="@+id/amount"
+        android:layout_marginEnd="15dp" />
 
 </RelativeLayout>

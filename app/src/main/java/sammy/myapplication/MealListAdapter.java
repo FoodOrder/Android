@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
@@ -39,10 +40,16 @@ public class MealListAdapter extends ArrayAdapter<Meal> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.format_meunview, parent, false);
         }
+        ImageView imgShop = (ImageView) convertView.findViewById(R.id.imageView5);
+        TextView tvShowShopName = (TextView)convertView.findViewById(R.id.textView7);
+        TextView tvShowShopTel = (TextView)convertView.findViewById(R.id.textView3) ;
         TextView amount = (TextView)convertView.findViewById(R.id.amount);
         TextView mealname = (TextView) convertView.findViewById(R.id.mealname);
         TextView mealprice = (TextView) convertView.findViewById(R.id.mealprice);
-        amount.setText(String.valueOf(meal.getMealnumber()));
+        imgShop.setImageDrawable(meal.getshopPic());
+        tvShowShopName.setText(meal.getShopName());
+        tvShowShopTel.setText(meal.getshopTel());
+        amount.setText("數量 "+String.valueOf(meal.getMealnumber()));
         mealname.setText(meal.getMealname());
         mealprice.setText("$ "+String.valueOf(meal.getMealprice()));
 

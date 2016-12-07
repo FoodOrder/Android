@@ -27,14 +27,14 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         GoToOrderButton =(ImageView) findViewById(R.id.buttonorder);
-        GoToOrderButton.setImageResource(R.drawable.restaurant);
+        GoToOrderButton.setImageResource(R.drawable.store);
         SearchOrder = (ImageView)findViewById(R.id.searchorder);
-        SearchOrder.setImageResource(R.drawable.padnote);
+        SearchOrder.setImageResource(R.drawable.order);
 
         ivSearchNearShop = (ImageView)findViewById(R.id.searchNearShop);
         ivCustomerService = (ImageView)findViewById(R.id.service);
         ivSearchNearShop.setImageResource(R.drawable.nearshop);
-        ivCustomerService.setImageResource(R.drawable.cooker);
+        ivCustomerService.setImageResource(R.drawable.service);
     }
     //OrderActivity view change
      public void GotoOrderAct(View v) {

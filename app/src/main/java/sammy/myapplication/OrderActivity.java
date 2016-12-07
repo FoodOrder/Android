@@ -70,9 +70,17 @@ public class OrderActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String shopemail = URL+String.valueOf(listShops.get(position).getemail());
+                String shopName = String.valueOf(listShops.get(position).getName());
+                String shopPic = String.valueOf(listShops.get(position).getImgURL());
+                String shopTel = String.valueOf(listShops.get(position).getTel());
+//                String shopIntr = URL+String.valueOf(listShops.get(position))
+
                 Intent intent = new Intent(OrderActivity.this, MealListActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("shopemail", shopemail);
+                bundle.putString("shopName", shopName);
+                bundle.putString("shopPic", shopPic);
+                bundle.putString("shopTel", shopTel);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
