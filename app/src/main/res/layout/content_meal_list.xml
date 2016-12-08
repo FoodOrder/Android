@@ -32,14 +32,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/menulistView"
-            android:layout_weight="1" />
+            android:layout_weight="0" />
 
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/shopimg"
-        android:layout_above="@+id/linearLayout2"
-        android:layout_alignParentStart="true" />
 </RelativeLayout>

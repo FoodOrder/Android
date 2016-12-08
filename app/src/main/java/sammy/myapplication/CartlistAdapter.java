@@ -34,11 +34,11 @@ public class CartlistAdapter extends ArrayAdapter<Meal> {
         Meal meal = mMealItemList.get(position);
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.format_meunview, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.format_cartview, parent, false);
         }
         TextView amount = (TextView)convertView.findViewById(R.id.amount);
-        TextView mealname = (TextView) convertView.findViewById(R.id.mealname);
-        TextView mealprice = (TextView) convertView.findViewById(R.id.mealprice);
+        TextView mealname = (TextView) convertView.findViewById(R.id.name);
+        TextView mealprice = (TextView) convertView.findViewById(R.id.price);
         amount.setText(String.valueOf(meal.getMealnumber()));
         mealname.setText(meal.getMealname());
         mealprice.setText("$ "+String.valueOf(meal.getMealprice()));

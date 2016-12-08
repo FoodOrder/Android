@@ -12,7 +12,7 @@ import java.io.Serializable;
  */
 public class Meal implements Serializable{
 
-    private String mealid;
+    private String foodId;
 
     private String mealname;
 
@@ -24,14 +24,14 @@ public class Meal implements Serializable{
 
     private int mealprice;
 
-    private int mealnumber = 0;
+    private int amount = 0;
 
     public String getMealid() {
-        return mealid;
+        return foodId;
     }
 
     public void setMealid(String mealid) {
-        this.mealid = mealid;
+        this.foodId = mealid;
     }
 
     public String getMealname() {
@@ -50,10 +50,10 @@ public class Meal implements Serializable{
         this.mealprice = mealprice;
     }
 
-    public int getMealnumber() {return mealnumber; }
+    public int getMealnumber() {return amount; }
 
     public void setMealnumber(int mealnumber) {
-        this.mealnumber = mealnumber;
+        this.amount = mealnumber;
     }
 
     public void setshopPic(Drawable shopPic){
@@ -81,8 +81,8 @@ public class Meal implements Serializable{
         JSONObject obj = new JSONObject();
         try{
 
-                obj.put("Mealname", mealid);
-                obj.put("MealAmout",mealnumber);
+                obj.put("Mealname", foodId);
+                obj.put("MealAmout", amount);
             obj.put("shopName",shopName);
             obj.put("shopPic",shopPic);
             obj.put("shopTel",shopTel);

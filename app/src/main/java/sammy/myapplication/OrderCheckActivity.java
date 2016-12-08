@@ -21,25 +21,13 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class OrderCheckActivity extends AppCompatActivity {
-    static String Useremail;
     String userID;
     String ORDERCHECK_USER_ID;
     private static final String ORDERCHECK_URL = "http://140.134.26.71:58080/android-backend/webapi/order/userId/";
-    private static final int UPDATE_USER_DETAIL = 1;
     private static final int UPDATE_CHECK_LIST = 1;
     private OrderCheckAdapter orderCheckAdapter;
     private ArrayList<OrderChecklist> Checklist = new ArrayList<OrderChecklist>();
     private Handler handler = new Handler() {
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case UPDATE_USER_DETAIL: {
-                    updateUserDetail();
-                    break;
-                }
-            }
-        }
-    };
-    private Handler handler1 = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case UPDATE_CHECK_LIST: {
@@ -65,7 +53,6 @@ public class OrderCheckActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-             //   GetuserDetail();
                 getShopListFromServer();
             }}).start();
 
@@ -86,14 +73,8 @@ public class OrderCheckActivity extends AppCompatActivity {
         orderCheckAdapter.addAll(Checklist);
     }
 
-    private void updateUserDetail() {
-        ORDERCHECK_USER_ID = ORDERCHECK_URL+userID;
-        System.out.println(ORDERCHECK_USER_ID);
-    }
-
     void getbundle() {
         Bundle bundle = this.getIntent().getExtras();
-       // Useremail = bundle.getString("EMAIL");
         userID = bundle.getString("userID");
     }
 
@@ -125,36 +106,8 @@ public class OrderCheckActivity extends AppCompatActivity {
                 }
                 Message m = new Message();
                 m.what = UPDATE_CHECK_LIST;
-                handler1.sendMessage(m);
+                handler.sendMessage(m);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    void GetuserDetail() {
-        HttpURLConnection conn = null;
-        try {
-            // 建立連線
-            URL url = new URL(Useremail);
-            System.out.println(Useremail);
-
-            conn = (HttpURLConnection) url.openConnection();
-            conn.setReadTimeout(10000);
-            conn.setConnectTimeout(15000);
-            conn.setRequestMethod("GET");
-            conn.connect();
-            // 讀取資料
-            BufferedReader reader = new BufferedReader(new InputStreamReader(
-                    conn.getInputStream(), "UTF-8"));
-            String jsonString = reader.readLine();
-            reader.close();
-            // 解析 json
-            userID=new JSONObject(jsonString).getString("ID");
-            Message m = new Message();
-            m.what = UPDATE_USER_DETAIL;
-            handler.sendMessage(m);
         } catch (Exception e) {
             e.printStackTrace();
         }

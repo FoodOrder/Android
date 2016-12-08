@@ -71,6 +71,7 @@
             android:layout_margin="10dp"
             android:layout_weight="0.5"
             android:id="@+id/searchNearShop"
+            android:onClick="GotoAroundAct"
 
             />
 
