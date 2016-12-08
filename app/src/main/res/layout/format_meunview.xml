@@ -11,13 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="fitXY"
-            android:src="@drawable/black"
-            android:id="@+id/imageView5" />
-
         <TextView
             android:text="店家名稱"
             android:layout_width="match_parent"

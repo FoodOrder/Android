@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -55,9 +56,18 @@ public class OrderCheckActivity extends AppCompatActivity {
         setContentView(R.layout.activity_order_check);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        ListView oreder_check_list = (ListView)this.findViewById(R.id.checklistView);
+        orderCheckAdapter = new OrderCheckAdapter(this, new ArrayList<OrderChecklist>());
+        oreder_check_list.setAdapter(orderCheckAdapter);
         getbundle();
-        GetuserDetail();
-        getShopListFromServer();
+        ORDERCHECK_USER_ID = ORDERCHECK_URL+userID;
+        System.out.println(ORDERCHECK_USER_ID);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+             //   GetuserDetail();
+                getShopListFromServer();
+            }}).start();
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -78,11 +88,13 @@ public class OrderCheckActivity extends AppCompatActivity {
 
     private void updateUserDetail() {
         ORDERCHECK_USER_ID = ORDERCHECK_URL+userID;
+        System.out.println(ORDERCHECK_USER_ID);
     }
 
     void getbundle() {
         Bundle bundle = this.getIntent().getExtras();
-        Useremail = bundle.getString("EMAIL");
+       // Useremail = bundle.getString("EMAIL");
+        userID = bundle.getString("userID");
     }
 
     void getShopListFromServer() {

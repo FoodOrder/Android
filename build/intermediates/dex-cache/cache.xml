@@ -2,103 +2,85 @@
 <items version="2" >
 
     <item
-        is-multidex="true"
-        jar="D:\SuperMenuApp\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.2.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="d4c936aa8c7d2522c82e3f1829c791d9e367f009">
-        <dex dex="D:\SuperMenuApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-23.2.0_48eeb94602cb8c25e1824fdc0bebf47b645a213d\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\SuperMenuApp\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.2.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="292a9fa091757208efa65e77eef63088247e51f3">
-        <dex dex="D:\SuperMenuApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-23.2.0_1a375a2214c4b6d4651ae99c7514f7d7d8b2d8e9\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\SuperMenuApp\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="78c221da6133785c77ac283e56904758c50504f7">
-        <dex dex="D:\SuperMenuApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_104c243542c6d191102dacca6a990dbcdb065093\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\SuperMenuApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.0\jars\libs\internal_impl-23.2.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="6e239441500605809818997dd63b62a947195f8c">
-        <dex dex="D:\SuperMenuApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.2.0_b8da50ffe4c64f135f9929fa5957bbb134c702b4\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\SuperMenuApp\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.2.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="8c108c22c99e794eff255bb34d2a461200c4cbb0">
-        <dex dex="D:\SuperMenuApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-23.2.0_704a141d7c751d7b317699e38b31b077ffd61be0\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\SuperMenuApp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.2.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="6e3578f92f7462d1a935a1d36173e3bdd1234976">
-        <dex dex="D:\SuperMenuApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.2.0_4f58ded4b494bd9a35cb1eb527f830cf469bd64c\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\lab-Ruan\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.2.0\support-annotations-23.2.0.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/Users/Lin/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.2.0/support-annotations-23.2.0.jar"
+        jumboMode="false"
         optimize="true"
         revision="23.0.2"
         sha1="c5bf571bb10462bd90e5419ade67793f71acbc87">
-        <dex dex="D:\SuperMenuApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.2.0_19cb845022f124f8d0d708dbb3893ae6cee7e317\classes.dex" />
+        <dex dex="/Users/Lin/Downloads/MyApplication/app/build/intermediates/pre-dexed/debug/support-annotations-23.2.0_21bc1ba10b31fd4600be331925bcab39689052f5.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="D:\SuperMenuApp\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="728cd9882d7394f03806c4eecf5e5017e5b1c733">
-        <dex dex="D:\SuperMenuApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_a16e82d916754808a1222b2b94c97c3bf1131ecd\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\lab-Ruan\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3.1\ecb6e1f8e4b0e84c4b886c2f14a1500caf309757\gson-2.3.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
-        <dex dex="D:\SuperMenuApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\gson-2.3.1_10de5008b1668a9600934105e5a0b663aa393a35\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\SuperMenuApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.0\jars\classes.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/Users/Lin/Downloads/MyApplication/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/jars/classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="23.0.2"
         sha1="e5f32fa48a3eb2de0c987025c11b6e3864b634d9">
-        <dex dex="D:\SuperMenuApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.2.0_3d8ab6c4c9a373a7a6473dae7494731d430cd206\classes.dex" />
+        <dex dex="/Users/Lin/Downloads/MyApplication/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.2.0_6e061d4da2c4bfb2837fa8e03e26d2b179f659c6.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="D:\SuperMenuApp\app\build\intermediates\exploded-aar\com.android.support\design\23.2.0\jars\classes.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="/Users/Lin/Downloads/MyApplication/app/build/intermediates/exploded-aar/com.android.support/design/23.2.0/jars/classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="23.0.2"
         sha1="1aa5b025efe97f5006f5be16d6ca67c6c3c0c0d8">
-        <dex dex="D:\SuperMenuApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-23.2.0_312a8b8bac58a19557a1ee6b5810510b5feb9f96\classes.dex" />
+        <dex dex="/Users/Lin/Downloads/MyApplication/app/build/intermediates/pre-dexed/debug/com.android.support-design-23.2.0_bf9b55e6ed95cd967eb5d27023425ec897547a44.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Lin/Downloads/MyApplication/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="8c108c22c99e794eff255bb34d2a461200c4cbb0">
+        <dex dex="/Users/Lin/Downloads/MyApplication/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-23.2.0_dba1724cd13fde7a000b283aa5145231dc6b644f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Lin/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="/Users/Lin/Downloads/MyApplication/app/build/intermediates/pre-dexed/debug/gson-2.3.1_68833dfd2ced64cf2d06e867d840f218dac92fd2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Lin/Downloads/MyApplication/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="6e3578f92f7462d1a935a1d36173e3bdd1234976">
+        <dex dex="/Users/Lin/Downloads/MyApplication/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.2.0_8601982c51e66d6515d273019e11a43cadf4cd51.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Lin/Downloads/MyApplication/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="d4c936aa8c7d2522c82e3f1829c791d9e367f009">
+        <dex dex="/Users/Lin/Downloads/MyApplication/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-23.2.0_f93412a82078edac4bf8d102661d18818ac9365c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Lin/Downloads/MyApplication/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/jars/libs/internal_impl-23.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="6e239441500605809818997dd63b62a947195f8c">
+        <dex dex="/Users/Lin/Downloads/MyApplication/app/build/intermediates/pre-dexed/debug/internal_impl-23.2.0_6762a38a2dbddae14ad7066d675cbd433c7444a8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Lin/Downloads/MyApplication/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="292a9fa091757208efa65e77eef63088247e51f3">
+        <dex dex="/Users/Lin/Downloads/MyApplication/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-23.2.0_246e753ebe4e2a1a94eaf1eec5c03ca31a90c3a3.jar" />
     </item>
 
 </items>

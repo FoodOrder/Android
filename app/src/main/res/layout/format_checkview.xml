@@ -6,6 +6,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:width="150px"
         android:text="訂單編號"
         android:id="@+id/id"
         android:layout_alignParentLeft="true"
@@ -33,7 +34,7 @@
         android:layout_height="wrap_content"
         android:text="訂餐時間"
         android:id="@+id/time"
-        android:width="200px"
+        android:width="400px"
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_alignBaseline="@+id/status"

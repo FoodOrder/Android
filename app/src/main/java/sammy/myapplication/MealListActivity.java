@@ -184,8 +184,8 @@ public class MealListActivity extends AppCompatActivity {
             // 解析 json
             JSONArray jsonObis = new JSONArray(jsonString);
             if (jsonObis.length() > 0) {
-                Meal meal = new Meal();
-                meal.setShopName(shopName);
+               // Meal meal = new Meal();
+               /* meal.setShopName(shopName);
                 Drawable dwShopPic = loadImageFromURL(shopPic);
                 BitmapDrawable bd = (BitmapDrawable) dwShopPic;
                 Bitmap bm = bd.getBitmap();
@@ -194,14 +194,14 @@ public class MealListActivity extends AppCompatActivity {
                 Matrix matrix = new Matrix();
                 matrix.postScale(1, 10);
                 Bitmap newbm = Bitmap.createBitmap(bm, 0, 0, width, height, matrix,true);
-                BitmapDrawable bd2 = new BitmapDrawable(newbm);
-                meal.setshopPic(bd2);
-                meal.setshopTel(shopTel);
-                meal.setMealname("開水");
-                listMenu.add(meal);
+                BitmapDrawable bd2 = new BitmapDrawable(newbm);*/
+            //    meal.setshopPic(bd2);
+             //   meal.setshopTel(shopTel);
+              //  meal.setMealname("開水");
+               // listMenu.add(meal);
 
                 for (int i = 0; i < jsonObis.length(); i++) {
-                    meal=new Meal();
+                    Meal meal=new Meal();
                     meal.setMealid(((JSONObject) jsonObis.get(i)).getString("id"));
                     Log.i("abc","aaaaaaaaaaaaaaaaaaaa"+Shopemail);
                     Log.i("abc",shopPic+"\n"+shopTel+"\n"+shopName);

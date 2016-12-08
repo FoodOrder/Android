@@ -27,7 +27,7 @@
 
     <ListView
         android:layout_width="match_parent"
-        android:id="@+id/shoplistView"
+        android:id="@+id/checklistView"
         android:divider = "@color/gray"
         android:layout_gravity="center_horizontal"
         android:layout_height="match_parent" />
