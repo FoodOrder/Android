@@ -60,7 +60,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".OrderCheckActivity"
-            android:label="@string/title_activity_order_check"
+            android:label="訂單查詢"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

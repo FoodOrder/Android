@@ -13,16 +13,25 @@
     tools:context="sammy.myapplication.AddFoodActivity"
     tools:showIn="@layout/activity_add_food">
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="235dp"
+        android:background="@color/gray">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/foodpic"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:scaleType="fitCenter"
+            android:layout_weight="1" />
+    </LinearLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <ImageView
-            android:layout_width="186dp"
-            android:layout_height="186dp"
-            android:id="@+id/foodpic"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentStart="true" />
 
         <LinearLayout
             android:orientation="horizontal"
