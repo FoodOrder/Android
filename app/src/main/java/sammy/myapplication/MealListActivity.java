@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -68,28 +69,32 @@ public class MealListActivity extends AppCompatActivity {
 
         setContentView(view1);
 
+        getbundle();
+
+      //  ImageView shopimg = (ImageView)findViewById(R.id.shopimg);
+       // shopimg.setImageDrawable(loadImageFromURL(shopPic));
+
         FloatingActionButton fab = (FloatingActionButton) view1.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MealListActivity.this, CartlistActivity.class);
-                intent.setClass(MealListActivity.this,CartlistActivity.class);
+                intent.setClass(MealListActivity.this, CartlistActivity.class);
                 intent.putExtra("FinalOrder", listMenu);
-               // listMenu.clear();
                 startActivity(intent);
+                MealListActivity.this.finish();
                 Snackbar.make(view, "前往購物車", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
                 listMenu.clear();
             }
         });
 
-        getbundle();
+
 
         Bundle bundle = this.getIntent().getExtras();
         tempid=bundle.getString("id",null);
         tempamt=bundle.getInt("foodamt",0);
         if (tempamt!=0){
-
             final ListView mealListView = (ListView) this.findViewById(R.id.menulistView);
             MealListAdapter = new MealListAdapter(this,android.R.layout.activity_list_item, getListMenu());
             mealListView.setAdapter(MealListAdapter);
@@ -184,28 +189,15 @@ public class MealListActivity extends AppCompatActivity {
             // 解析 json
             JSONArray jsonObis = new JSONArray(jsonString);
             if (jsonObis.length() > 0) {
-               // Meal meal = new Meal();
-               /* meal.setShopName(shopName);
-                Drawable dwShopPic = loadImageFromURL(shopPic);
-                BitmapDrawable bd = (BitmapDrawable) dwShopPic;
-                Bitmap bm = bd.getBitmap();
-                int width = bm.getWidth();
-                int height = bm.getHeight();
-                Matrix matrix = new Matrix();
-                matrix.postScale(1, 10);
-                Bitmap newbm = Bitmap.createBitmap(bm, 0, 0, width, height, matrix,true);
-                BitmapDrawable bd2 = new BitmapDrawable(newbm);*/
-            //    meal.setshopPic(bd2);
-             //   meal.setshopTel(shopTel);
-              //  meal.setMealname("開水");
-               // listMenu.add(meal);
-
                 for (int i = 0; i < jsonObis.length(); i++) {
                     Meal meal=new Meal();
                     meal.setMealid(((JSONObject) jsonObis.get(i)).getString("id"));
+<<<<<<< HEAD
                     Log.i("abc","aaaaaaaaaaaaaaaaaaaa"+Shopemail);
 //                    Log.i("abc",shopPic+"\n"+shopTel+"\n"+shopName);
 
+=======
+>>>>>>> a9eb6421cc4ae68b8e685f2f0859048541a36b34
                     meal.setMealname(((JSONObject) jsonObis.get(i)).getString("menuName"));
                     meal.setMealprice(((JSONObject) jsonObis.get(i)).getInt("menuPrice"));
                     listMenu.add(meal);

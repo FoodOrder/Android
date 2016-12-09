@@ -1,12 +1,15 @@
 package sammy.myapplication;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
@@ -14,6 +17,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
@@ -41,10 +46,12 @@ import javax.net.ssl.HttpsURLConnection;
 public class CartlistActivity extends AppCompatActivity {
     private static final String ADDURL = "http://140.134.26.71:58080/android-backend/webapi/order/addOrder";
     ArrayList<Meal> Orderlist = new ArrayList<Meal>();
-    data Orderdata = new data();
-    ArrayList<item> Orderitem = new ArrayList<item>();
-    Gson gson = new Gson();
+    ArrayList<Meal> Orderlist1 = new ArrayList<Meal>();
+    public static final String KEY = "com.my.package.app";
+    String item ="";
+    String userID1;
     int id =1;
+    private CartlistAdapter carlistadapter;
 
     static final int MIN_TIME = 5000;// 位置更新條件：5000 毫秒
     static final float MIN_DIST = 0; // 位置更新條件：5 公尺
@@ -61,17 +68,14 @@ public class CartlistActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cartlist);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        SharedPreferences spref = getApplication().getSharedPreferences(KEY, Context.MODE_PRIVATE);
+        userID1 = spref.getString("userID" , null);
         getbundle();
         setMyLoc();
-        send();
+        final ListView cartListView = (ListView) this.findViewById(R.id.cartlistView);
+        carlistadapter = new CartlistAdapter(this,android.R.layout.activity_list_item, Orderlist1);
+        cartListView.setAdapter(carlistadapter);
         mgr = (LocationManager) getSystemService(LOCATION_SERVICE);
-        /*for (int i=0 ; i < Orderlist.size() ; i++){
-            Orderitem.get(i).setFoodId(Orderlist.get(i).getMealid());
-            Orderitem.get(i).setAmount(Orderlist.get(i).getMealnumber());
-        }*/
-      //  Orderdata.setMembers(Orderitem);
-     //   gson.toJson(Orderdata);
-
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -87,137 +91,91 @@ public class CartlistActivity extends AppCompatActivity {
 
     }
 
-    class item {
-        String foodId;
-
-        public String getFoodId() {
-            return foodId;
-        }
-
-        public void setFoodId(String foodId) {
-            this.foodId = foodId;
-        }
-
-        public int getAmount() {
-            return amount;
-        }
-
-        public void setAmount(int amount) {
-            this.amount = amount;
-        }
-
-        int amount;
-    }
-
-    class data {
-        private int userId = 10;
-
-        public List<item> getMembers() {
-            return members;
-        }
-
-        public void setMembers(List<item> members) {
-            this.members = members;
-        }
-
-        @SerializedName("items")
-        List<item> members = new ArrayList<item>();
-
-
-    }
-
-    public JSONObject getJSONObject(){
-        JSONObject obj = new JSONObject();
-        try{
-            for (int i = 0; i < Orderlist.size(); i++) {
-                if(Orderlist.get(i).getMealnumber()!=0){
-                    obj.put("Mealname", Orderlist.get(i).getMealid());
-                    obj.put("MealAmout", Orderlist.get(i).getMealnumber());
-                }
-                System.out.println(Orderlist.get(i).getMealid());
-                System.out.println(Orderlist.get(i).getMealnumber());
-            }
-
-        }catch (JSONException e){
-            System.out.println("Default" + e.getMessage());
-        }
-    return obj;
-    }
-
-
     void getbundle() {
         Intent intent = this.getIntent();
         Orderlist = (ArrayList<Meal>) intent.getSerializableExtra("FinalOrder");
         for (int i = 0; i < Orderlist.size(); i++) {
-            System.out.println(Orderlist.get(i).getMealid());
-            System.out.println(Orderlist.get(i).getMealnumber());
+            System.out.print(Orderlist.get(i).getMealid() + ",");
+            System.out.print(Orderlist.get(i).getMealnumber() + "|");
         }
-     /*   for (int i = 0; i < Orderlist.size(); i++) {
-            Orderitem.get(i).setFoodId(Orderlist.get(i).getMealid());
-            Orderitem.get(i).setAmount(Orderlist.get(i).getMealnumber());
-        }*/
+        for (int i = 0; i < Orderlist.size(); i++) {
+            if (Orderlist.get(i).getMealnumber() != 0) {
+                Orderlist1.add(Orderlist.get(i));
+            }
+        }
     }
 
     void send() {
-        final Gson fingson = gson;
         new Thread(new Runnable() {
             @Override
             public void run() {
+                HttpURLConnection conn = null;
                 try {
-                    String response = "";
                     URL url = new URL(ADDURL);
-                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                    conn.setReadTimeout(15000);
-                    conn.setConnectTimeout(15000);
-                    conn.setRequestMethod("POST");
-                    conn.setDoInput(true);
+                    conn = (HttpURLConnection) url.openConnection();
                     conn.setDoOutput(true);
-                    //JSONObject cred = new JSONObject();
-
-                //    HashMap<String, String> postDataParams = new HashMap<>();
-                  //  postDataParams.put("Id", "10");
-                    //postDataParams.put("shopId", "1");
-
-                    JSONObject ooo = new JSONObject();
-                    ooo.put("userId",id);
-
-
-                    JSONArray jsonArray = new JSONArray();
-                    for(int i=0 ; i < Orderlist.size() ; i++){
-                        jsonArray.put(Orderlist.get(i).getJSONObject());
-                    }
-                    OutputStream os = conn.getOutputStream();
-                    BufferedWriter writer = new BufferedWriter(
-                            new OutputStreamWriter(os, "UTF-8"));
-                  //  writer.write(String.valueOf(postDataParams));
-                    // Log.v("Andy", cred.toString());
-                    writer.write(ooo.toString());
-                    writer.flush();
-                    writer.close();
-                    os.close();
-                  //  DataOutputStream localDataOutputStream = new DataOutputStream(conn.getOutputStream());
-                //    localDataOutputStream.writeBytes(jsonArray.toString());
-                ///    localDataOutputStream.writeBytes(ooo.toString());
-                    System.out.println(ooo.toString());
-              //      localDataOutputStream.flush();
-                //    localDataOutputStream.close();
-                    int responseCode=conn.getResponseCode();
-                    if (responseCode == HttpsURLConnection.HTTP_OK) {
-                        String line;
-                        BufferedReader br=new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                        while ((line=br.readLine()) != null) {
-                            response+=line;
+                    conn.setRequestMethod("POST");
+                    conn.setUseCaches(false);
+                    conn.setConnectTimeout(10000);
+                    conn.setReadTimeout(10000);
+                    conn.setRequestProperty("Content-Type", "application/json;charset=utf-8");
+                    conn.connect();
+                    String userID = "\"userID\":"+userID1;
+                    String LOG = "\"longitude\":"+currentLong;
+                    String LAT = "\"latitude\":"+currentLat;
+                   /* for (int i = 0; i < Orderlist.size(); i++) {
+                        if (Orderlist.get(i).getMealnumber() != 0) {
+                        if(i != Orderlist.size()-1) {
+                            item = item + "{\"foodId\":" + Orderlist.get(i).getMealid() + ",\"amount\":" + Orderlist.get(i).getMealnumber() + "},";
+                        }else{
+                            item = item + "{\"foodId\":" + Orderlist.get(i).getMealid() + ",\"amount\":" + Orderlist.get(i).getMealnumber() + "}";
                         }
+                        }
+                    }*/
+
+                    for (int i = 0; i < Orderlist1.size(); i++) {
+                            if(i != Orderlist1.size()-1) {
+                                item = item + "{\"foodId\":" + Orderlist1.get(i).getMealid() + ",\"amount\":" + Orderlist1.get(i).getMealnumber() + "},";
+                            }else{
+                                item = item + "{\"foodId\":" + Orderlist1.get(i).getMealid() + ",\"amount\":" + Orderlist1.get(i).getMealnumber() + "}";
+                            }
                     }
-                    else {
-                        response="";
+
+                    String jsonString = "{\"items\":["+ item+"],"+userID+","+LOG+","+LAT+"}";
+
+                    System.out.println(jsonString);
+
+                    Log.v("Andy", jsonString);
+                    DataOutputStream localDataOutputStream = new DataOutputStream(conn.getOutputStream());
+                    localDataOutputStream.writeBytes(jsonString);
+                    localDataOutputStream.flush();
+                    localDataOutputStream.close();
+
+                    int HttpResult =conn.getResponseCode();
+                    if(HttpResult ==HttpURLConnection.HTTP_OK){
+                        BufferedReader br = new BufferedReader(new InputStreamReader(
+                                conn.getInputStream(),"utf-8"));
+                        String line = null;
+                        StringBuffer sb = new StringBuffer();
+                        while ((line = br.readLine()) != null) {
+                            sb.append(line + "\n");
+                        }
+                        br.close();
+
+                        System.out.println(""+sb.toString());
+
+                    }else{
+                        System.out.println(conn.getResponseMessage());
                     }
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
                     e.printStackTrace();
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                }
+                finally {
+                    if(conn != null) {
+                        conn.disconnect();
+                    }
                 }
             }
         }).start();
@@ -235,7 +193,8 @@ public class CartlistActivity extends AppCompatActivity {
                 Log.i("abc", currentLat.toString() + "   Lat");
                 Log.i("abc", currentLong.toString() + "    Long");
                 if (currentLocation != null) {
-                    // tvShow.setText( "Lat : " + String.valueOf(currentLat) + "\nLong : " + String.valueOf(currentLong));
+                    TextView tvShow = (TextView)findViewById(R.id.textView10);
+                     tvShow.setText( "Lat : " + String.valueOf(currentLat) + "\nLong : " + String.valueOf(currentLong));
                 } else {
                 }
             }
@@ -256,6 +215,8 @@ public class CartlistActivity extends AppCompatActivity {
             }
         };
     }
+
+
 
     @Override
     protected void onResume() {

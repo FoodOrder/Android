@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     String userID;
     private ImageView GoToOrderButton;
     private ImageView SearchOrder;
-
     private ImageView ivSearchNearShop;
     private ImageView ivCustomerService;
     @Override
@@ -64,15 +63,17 @@ public class MainActivity extends AppCompatActivity {
     }
     //OrderCheckActivity view change
     public void GotoOrderCheckAct(View v) {
-       /* SharedPreferences spref = getApplication().getSharedPreferences(KEY, Context.MODE_PRIVATE);
-        String URL= "http://140.134.26.71:58080/android-backend/webapi/user/email/";
-        String email= URL+spref.getString("email", null);*/
         Intent intent = new Intent();
         Bundle bundle = new Bundle();
-      //  bundle.putString("EMAIL", email);
         bundle.putString("userID", userID);
         intent.putExtras(bundle);
         intent.setClass(MainActivity.this, OrderCheckActivity.class);
+        startActivity(intent);
+    }
+    //AroundActivity view change
+    public void GotoAroundAct(View v) {
+        Intent intent = new Intent();
+        intent.setClass(MainActivity.this, AroundActivity.class);
         startActivity(intent);
 
     }
@@ -141,14 +142,12 @@ public class MainActivity extends AppCompatActivity {
             reader.close();
             // 解析 json
             userID=new JSONObject(jsonString).getString("ID");
-          /* Message m = new Message();
-            m.what = UPDATE_USER_DETAIL;
-            handler.sendMessage(m);*/
+            SharedPreferences spref = getApplication().getSharedPreferences(KEY, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = spref.edit();
+            editor.putString("userID", userID);
+            editor.commit();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-
-
 }
