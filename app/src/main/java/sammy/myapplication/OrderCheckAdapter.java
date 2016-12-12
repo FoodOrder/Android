@@ -45,7 +45,7 @@ public class OrderCheckAdapter extends ArrayAdapter<OrderChecklist> {
                 tv_status.setText("已送達");
                 break;
             case  "4":
-                tv_status.setText("已拒絕");
+                tv_status.setText("拒絕此訂單");
                 break;
 
         }

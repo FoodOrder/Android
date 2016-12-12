@@ -55,9 +55,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
     //OrderActivity view change
-     public void GotoOrderAct(View v) {
+    public void GotoOrderAct(View v) {
         Intent intent = new Intent();
         intent.setClass(MainActivity.this, OrderActivity.class);
+        startActivity(intent);
+
+    }
+    //CustomerServiceActivity view change
+    public void GotoCustomerAct(View v) {
+        Intent intent = new Intent();
+        Bundle bundle = new Bundle();
+        bundle.putString("userID", userID);
+        intent.putExtras(bundle);
+        intent.setClass(MainActivity.this, CustomerServiceActivity.class);
         startActivity(intent);
 
     }
@@ -97,12 +107,6 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
-        if(id == R.id.action_cart) {
-            Intent intent = new Intent();
-            intent.setClass(this, CartlistActivity.class);
-            startActivity(intent);
-        }
-
        if(id == R.id.action_account) {
            SharedPreferences spref = getApplication().getSharedPreferences(KEY, Context.MODE_PRIVATE);
            String URL= "http://140.134.26.71:58080/android-backend/webapi/user/email/";
@@ -113,12 +117,6 @@ public class MainActivity extends AppCompatActivity {
            intent.putExtras(bundle);
            intent.setClass(this, AccountActivity.class);
            startActivity(intent);
-        }
-
-        if(id == R.id.action_signup) {
-            Intent intent = new Intent();
-            intent.setClass(this, SignUpActivity.class);
-            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

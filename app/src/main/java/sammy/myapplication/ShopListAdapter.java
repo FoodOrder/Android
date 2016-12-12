@@ -13,7 +13,6 @@ import java.util.List;
  * Created by Lin on 2016/8/29.
  */
 public class ShopListAdapter extends ArrayAdapter<Shop> {
-
     public ShopListAdapter(Context context, List<Shop> objects) {
         super(context, 0, objects);
     }
@@ -35,5 +34,6 @@ public class ShopListAdapter extends ArrayAdapter<Shop> {
 
         return convertView;
     }
+
 
 }

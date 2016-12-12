@@ -1,68 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingLeft="7dp"
     android:paddingRight="7dp"
     android:paddingTop="7dp"
+    android:background="@color/login"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context="sammy.myapplication.OrderCheckActivity"
         tools:showIn="@layout/activity_order_check">
 
 
     <LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="1"
-    android:layout_alignParentBottom="true"
-    android:layout_alignParentEnd="false"
-    android:layout_alignParentStart="false">
-
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="56dp">
-
-            <TextView
-                android:text="編號"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20px"
-                android:layout_marginBottom="20px"
-                android:textSize="20dp"
-                android:id="@+id/textView13"/>
-
-            <TextView
-                android:text="訂餐時間"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20px"
-                android:textSize="20dp"
-                android:paddingLeft="20dp"
-                android:id="@+id/textView12"/>
-
-            <TextView
-                android:text="狀態"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:layout_marginTop="20px"
-                android:layout_marginBottom="20px"
-                android:paddingLeft="50dp"
-                android:id="@+id/textView10"/>
-        </LinearLayout>
-
-        <ListView
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:id="@+id/checklistView"
-        android:divider = "@color/gray"
-        android:layout_gravity="center_horizontal"
-        android:layout_height="match_parent" />
-</LinearLayout>
+        android:layout_height="25sp"
+        android:layout_gravity="center_horizontal">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="訂單編號"
+            android:id="@+id/textView20" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="          下訂時間"
+            android:id="@+id/textView21" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="                  訂單狀態"
+            android:id="@+id/textView22" />
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/checklistView"
+        android:layout_gravity="center_horizontal" />
 </LinearLayout>

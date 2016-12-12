@@ -26,29 +26,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/layout_header_">
 
-            <TextView
-                android:text="餐點名稱"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
-                android:textSize="21dp"
-                android:id="@+id/textView7"/>
-
-            <TextView
-                android:text="價格"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="70dp"
-                android:textSize="21dp"
-                android:id="@+id/textView15"/>
-
-            <TextView
-                android:text="數量"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="50dp"
-                android:textSize="21dp"
-                android:id="@+id/textView3"/>
         </LinearLayout>
 
         <ListView

@@ -35,12 +35,12 @@
             android:label="店家"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".LeaderboardActivity"
-            android:label="@string/title_activity_leaderboard"
+            android:name=".CustomerServiceActivity"
+            android:label="客服服務"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AroundActivity"
-            android:label="@string/title_activity_around"
+            android:label="附近店家"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MealListActivity"
@@ -48,7 +48,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".CartlistActivity"
-            android:label="訂單查詢"
+            android:label="購物車"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AddFoodActivity"
@@ -60,11 +60,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".OrderCheckActivity"
-<<<<<<< HEAD
-            android:label="訂單查詢"
-=======
             android:label="訂單"
->>>>>>> a9eb6421cc4ae68b8e685f2f0859048541a36b34
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

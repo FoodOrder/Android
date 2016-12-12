@@ -15,6 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -33,6 +35,7 @@ public class AroundActivity extends AppCompatActivity {
     static final int MIN_TIME = 5000;// 位置更新條件：5000 毫秒
     static final float MIN_DIST = 5; // 位置更新條件：5 公尺
     LocationManager mgr;        // 定位總管
+    private AroundAdapter aroundAdapter;
     LocationListener myLocListener;
     Double currentLat = 0.0, currentLong = 0.0;
     Location currentLocation;
@@ -40,7 +43,7 @@ public class AroundActivity extends AppCompatActivity {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case UPDATE_SHOP_LIST: {
-                   // updateShopList();
+                    updateShopList();
                     break;
                 }
             }
@@ -54,32 +57,48 @@ public class AroundActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        ListView aroundListView = (ListView) this.findViewById(R.id.aroundlistView);
+        aroundAdapter = new AroundAdapter(this, new ArrayList<Shop>());
+        aroundListView.setAdapter(aroundAdapter);
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        getShopListFromServer();
+                    }
+                }).start();
+                Snackbar.make(view, "定位完成,如距離無法顯示請等待當前位置載入完成後重試", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
-        System.out.println("finish1");
+
         mgr = (LocationManager) getSystemService(LOCATION_SERVICE);
-        System.out.println("finish2");
         setMyLoc();
-
-        System.out.println("finish3");
         System.out.println("Lat : " + String.valueOf(currentLat) + "\nLong : " + String.valueOf(currentLong));
-        System.out.println("finish4");
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                getShopListFromServer();
-
-            }}).start();
+       /* while(currentLat!=0.0 || currentLong!=0.0) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    getShopListFromServer();
+                      System.out.println(listShops.get(0).getDistance());
+                }
+            }).start();
+        }*/
     }
 
+    private void updateShopList() {
+        aroundAdapter.clear();
+        aroundAdapter.addAll(listShops);
+    }
+
+
     void setMyLoc() {
-        Log.i("abc","123");
+        Log.i("abc", "123");
         myLocListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
@@ -91,6 +110,8 @@ public class AroundActivity extends AppCompatActivity {
                 Log.i("abc", currentLat.toString() + "   Lat");
                 Log.i("abc", currentLong.toString() + "    Long");
                 if (currentLocation != null) {
+                    TextView latlong = (TextView)findViewById(R.id.latlong);
+                    latlong.setText("Lat : " + String.valueOf(currentLat) + "\tLong : " + String.valueOf(currentLong));
                     System.out.println("Lat : " + String.valueOf(currentLat) + "\nLong : " + String.valueOf(currentLong));
                 } else {
                 }
@@ -175,7 +196,7 @@ public class AroundActivity extends AppCompatActivity {
                 Math.pow(Math.sin(a / 2), 2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
         s = s * EARTH_RADIUS;
         s = Math.round(s * 100);
-        return s * 10;
+        return (int)s * 10;
     }
 
     void getShopListFromServer() {
@@ -214,10 +235,5 @@ public class AroundActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
-   /* private void updateShopList() {
-        shopListAdapter.clear();
-        shopListAdapter.addAll(listShops);
-    }*/
 
 }

@@ -165,9 +165,9 @@ public class MealListActivity extends AppCompatActivity {
     void getbundle() {
         Bundle bundle = this.getIntent().getExtras();
         Shopemail = bundle.getString("shopemail");
-//        shopName = bundle.getString("shopName");
-//        shopPic = bundle.getString("shopPic");
-//        shopTel = bundle.getString("shopTel");
+        shopName = bundle.getString("shopName");
+        shopPic = bundle.getString("shopPic");
+        shopTel = bundle.getString("shopTel");
     }
 
 
@@ -192,12 +192,6 @@ public class MealListActivity extends AppCompatActivity {
                 for (int i = 0; i < jsonObis.length(); i++) {
                     Meal meal=new Meal();
                     meal.setMealid(((JSONObject) jsonObis.get(i)).getString("id"));
-<<<<<<< HEAD
-                    Log.i("abc","aaaaaaaaaaaaaaaaaaaa"+Shopemail);
-//                    Log.i("abc",shopPic+"\n"+shopTel+"\n"+shopName);
-
-=======
->>>>>>> a9eb6421cc4ae68b8e685f2f0859048541a36b34
                     meal.setMealname(((JSONObject) jsonObis.get(i)).getString("menuName"));
                     meal.setMealprice(((JSONObject) jsonObis.get(i)).getInt("menuPrice"));
                     listMenu.add(meal);

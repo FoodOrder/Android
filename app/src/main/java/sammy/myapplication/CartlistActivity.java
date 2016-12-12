@@ -17,8 +17,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
@@ -83,8 +85,10 @@ public class CartlistActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 send();
-                Snackbar.make(view, "訂單已清除", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+
+                Toast.makeText(CartlistActivity.this, "訂單已送出", Toast.LENGTH_LONG).show();
+
+                CartlistActivity.this.finish();
             }
         });
 
@@ -120,19 +124,15 @@ public class CartlistActivity extends AppCompatActivity {
                     conn.setReadTimeout(10000);
                     conn.setRequestProperty("Content-Type", "application/json;charset=utf-8");
                     conn.connect();
-                    String userID = "\"userID\":"+userID1;
+                    String userID = "\"userId\":"+userID1;
                     String LOG = "\"longitude\":"+currentLong;
                     String LAT = "\"latitude\":"+currentLat;
-                   /* for (int i = 0; i < Orderlist.size(); i++) {
-                        if (Orderlist.get(i).getMealnumber() != 0) {
-                        if(i != Orderlist.size()-1) {
-                            item = item + "{\"foodId\":" + Orderlist.get(i).getMealid() + ",\"amount\":" + Orderlist.get(i).getMealnumber() + "},";
-                        }else{
-                            item = item + "{\"foodId\":" + Orderlist.get(i).getMealid() + ",\"amount\":" + Orderlist.get(i).getMealnumber() + "}";
-                        }
-                        }
-                    }*/
-
+                    EditText address = (EditText)findViewById(R.id.address);
+                    String ADDRESS = "";
+                    ADDRESS = "\"address\":\""+address.getText().toString()+"\"";
+                    EditText remark = (EditText)findViewById(R.id.remark);
+                    String REMARK ="";
+                    REMARK =  "\"remark\":\""+remark.getText().toString()+"\"";
                     for (int i = 0; i < Orderlist1.size(); i++) {
                             if(i != Orderlist1.size()-1) {
                                 item = item + "{\"foodId\":" + Orderlist1.get(i).getMealid() + ",\"amount\":" + Orderlist1.get(i).getMealnumber() + "},";
@@ -141,7 +141,7 @@ public class CartlistActivity extends AppCompatActivity {
                             }
                     }
 
-                    String jsonString = "{\"items\":["+ item+"],"+userID+","+LOG+","+LAT+"}";
+                    String jsonString = "{\"items\":["+ item+"],"+userID+","+LOG+","+LAT+","+ADDRESS+","+REMARK+"}";
 
                     System.out.println(jsonString);
 
@@ -194,7 +194,7 @@ public class CartlistActivity extends AppCompatActivity {
                 Log.i("abc", currentLong.toString() + "    Long");
                 if (currentLocation != null) {
                     TextView tvShow = (TextView)findViewById(R.id.textView10);
-                     tvShow.setText( "Lat : " + String.valueOf(currentLat) + "\nLong : " + String.valueOf(currentLong));
+                     tvShow.setText( "緯度 : " + String.valueOf(currentLat) + "\t經度 : " + String.valueOf(currentLong));
                 } else {
                 }
             }

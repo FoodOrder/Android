@@ -5,21 +5,11 @@
     <item
         android:id="@+id/action_account"
         android:orderInCategory="100"
-        android:title="帳戶"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/action_signup"
-        android:orderInCategory="100"
-        android:title="註冊"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/action_cart"
-        android:orderInCategory="100"
-        android:title="購物車"
+        android:title="帳戶資訊"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:title="設定"
+        android:title="登出"
         app:showAsAction="never" />
 </menu>

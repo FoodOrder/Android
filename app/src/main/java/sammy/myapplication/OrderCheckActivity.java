@@ -55,17 +55,6 @@ public class OrderCheckActivity extends AppCompatActivity {
             public void run() {
                 getShopListFromServer();
             }}).start();
-
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
     }
 
     private void updateCheckList() {
@@ -100,7 +89,7 @@ public class OrderCheckActivity extends AppCompatActivity {
                     OrderChecklist Ordlist = new OrderChecklist();
                     Ordlist.setId(((JSONObject) jsonObis.get(i)).getString("id"));
                     Ordlist.setStatus(((JSONObject) jsonObis.get(i)).getString("status"));
-                    Ordlist.setRemark(((JSONObject) jsonObis.get(i)).getString("remark"));
+            //        Ordlist.setRemark(((JSONObject) jsonObis.get(i)).getString("remark"));
                     Ordlist.setOrderTime(((JSONObject) jsonObis.get(i)).getString("orderTime"));
                     Checklist.add(Ordlist);
                 }
