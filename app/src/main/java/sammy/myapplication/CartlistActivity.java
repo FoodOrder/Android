@@ -55,6 +55,7 @@ public class CartlistActivity extends AppCompatActivity {
     LocationManager mgr;        // 定位總管
     LocationListener myLocListener;
     Double currentLat = 0.0, currentLong = 0.0;
+    Double compare = 0.0;
     Location currentLocation;
 
 
@@ -78,12 +79,16 @@ public class CartlistActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                send();
-
-                Toast.makeText(CartlistActivity.this, "訂單已送出", Toast.LENGTH_LONG).show();
-
-                CartlistActivity.this.finish();
+                    if (Orderlist1.size()==0) {
+                        Toast.makeText(CartlistActivity.this, "訂單不可為空", Toast.LENGTH_LONG).show();
+                        CartlistActivity.this.finish();
+                    }else if(currentLat.equals(compare)&&currentLong.equals(compare)){
+                        Toast.makeText(CartlistActivity.this, "請等待GPS載入完成", Toast.LENGTH_LONG).show();
+                    }else{
+                        send();
+                        Toast.makeText(CartlistActivity.this, "訂單已送出", Toast.LENGTH_LONG).show();
+                        CartlistActivity.this.finish();
+                    }
             }
         });
 
