@@ -40,8 +40,10 @@ import javax.net.ssl.HttpsURLConnection;
 public class OrderItemActivity extends AppCompatActivity {
     private static final String update ="http://140.134.26.71:58080/android-backend/webapi/order/update";
     String URL;
+    String Status;
     String id;
     String status = "3";
+    String pass = "2";
     private Button btnchecked;
     private OrderItemAdapter orderItemAdapter;
     ArrayList<Meal> checklist = new ArrayList<Meal>();
@@ -70,11 +72,17 @@ public class OrderItemActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                submitRegistration();
-                Toast.makeText(OrderItemActivity.this, "感謝使用", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent();
-                intent.setClass(OrderItemActivity.this, MainActivity.class);
-                startActivity(intent);
+                System.out.println(Status);
+                if(Status.equals(pass)) {
+                    submitRegistration();
+                    Toast.makeText(OrderItemActivity.this, "感謝使用", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent();
+                    intent.setClass(OrderItemActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }else{
+                    Snackbar.make(v, "尚未外送無法選擇已送達", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
             }
         });
 
@@ -101,6 +109,7 @@ public class OrderItemActivity extends AppCompatActivity {
 
     void getbundle() {
         Bundle bundle = this.getIntent().getExtras();
+        Status = bundle.getString("status");
         URL = bundle.getString("checkurl");
         id = bundle.getString("id");
     }

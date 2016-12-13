@@ -65,6 +65,7 @@ public class OrderCheckActivity extends AppCompatActivity {
                 String checkurl = URL + String.valueOf(Checklist.get(position).getId());
                 Intent intent = new Intent(OrderCheckActivity.this, OrderItemActivity.class);
                 Bundle bundle = new Bundle();
+                bundle.putString("status",Checklist.get(position).getStatus());
                 bundle.putString("id",String.valueOf(Checklist.get(position).getId()));
                 bundle.putString("checkurl", checkurl);
                 intent.putExtras(bundle);
