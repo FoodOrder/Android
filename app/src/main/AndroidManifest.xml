@@ -61,6 +61,10 @@
         <activity
             android:name=".OrderCheckActivity"
             android:label="訂單"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".OrderItemActivity"
+            android:label="訂單細項"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

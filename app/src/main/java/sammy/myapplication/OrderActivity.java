@@ -73,7 +73,7 @@ public class OrderActivity extends AppCompatActivity {
                 String shopName = String.valueOf(listShops.get(position).getName());
                 String shopPic = String.valueOf(listShops.get(position).getImgURL());
                 String shopTel = String.valueOf(listShops.get(position).getTel());
-//                String shopIntr = URL+String.valueOf(listShops.get(position))
+
 
                 Intent intent = new Intent(OrderActivity.this, MealListActivity.class);
                 Bundle bundle = new Bundle();

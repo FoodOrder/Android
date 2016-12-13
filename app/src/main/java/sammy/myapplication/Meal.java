@@ -77,21 +77,6 @@ public class Meal implements Serializable{
     }
 
 
-    public JSONObject getJSONObject(){
-        JSONObject obj = new JSONObject();
-        try{
-
-                obj.put("Mealname", foodId);
-                obj.put("MealAmout", amount);
-            obj.put("shopName",shopName);
-            obj.put("shopPic",shopPic);
-            obj.put("shopTel",shopTel);
-
-            } catch (JSONException e1) {
-            e1.printStackTrace();
-        }
-     return obj;
-    }
 
 }
 

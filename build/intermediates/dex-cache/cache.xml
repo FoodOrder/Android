@@ -8,34 +8,25 @@
         optimize="true"
         revision="23.0.2"
         sha1="c5bf571bb10462bd90e5419ade67793f71acbc87">
-        <dex dex="/Users/Lin/Downloads/MyApplication/app/build/intermediates/pre-dexed/debug/support-annotations-23.2.0_21bc1ba10b31fd4600be331925bcab39689052f5.jar" />
+        <dex dex="/Users/Lin/Downloads/Android/app/build/intermediates/pre-dexed/debug/support-annotations-23.2.0_21bc1ba10b31fd4600be331925bcab39689052f5.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/Lin/Downloads/MyApplication/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="e5f32fa48a3eb2de0c987025c11b6e3864b634d9">
-        <dex dex="/Users/Lin/Downloads/MyApplication/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.2.0_6e061d4da2c4bfb2837fa8e03e26d2b179f659c6.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Lin/Downloads/MyApplication/app/build/intermediates/exploded-aar/com.android.support/design/23.2.0/jars/classes.jar"
+        jar="/Users/Lin/Downloads/Android/app/build/intermediates/exploded-aar/com.android.support/design/23.2.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.2"
         sha1="1aa5b025efe97f5006f5be16d6ca67c6c3c0c0d8">
-        <dex dex="/Users/Lin/Downloads/MyApplication/app/build/intermediates/pre-dexed/debug/com.android.support-design-23.2.0_bf9b55e6ed95cd967eb5d27023425ec897547a44.jar" />
+        <dex dex="/Users/Lin/Downloads/Android/app/build/intermediates/pre-dexed/debug/com.android.support-design-23.2.0_5118af405d6690e9c5dad4e42023cbdca016c332.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/Lin/Downloads/MyApplication/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.2.0/jars/classes.jar"
+        jar="/Users/Lin/Downloads/Android/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.2.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.2"
-        sha1="8c108c22c99e794eff255bb34d2a461200c4cbb0">
-        <dex dex="/Users/Lin/Downloads/MyApplication/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-23.2.0_dba1724cd13fde7a000b283aa5145231dc6b644f.jar" />
+        sha1="292a9fa091757208efa65e77eef63088247e51f3">
+        <dex dex="/Users/Lin/Downloads/Android/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-23.2.0_7e6c1055b498289da125b2cdc6855953b98339a9.jar" />
     </item>
     <item
         is-multidex="false"
@@ -44,43 +35,52 @@
         optimize="true"
         revision="23.0.2"
         sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
-        <dex dex="/Users/Lin/Downloads/MyApplication/app/build/intermediates/pre-dexed/debug/gson-2.3.1_68833dfd2ced64cf2d06e867d840f218dac92fd2.jar" />
+        <dex dex="/Users/Lin/Downloads/Android/app/build/intermediates/pre-dexed/debug/gson-2.3.1_68833dfd2ced64cf2d06e867d840f218dac92fd2.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/Lin/Downloads/MyApplication/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/jars/classes.jar"
+        jar="/Users/Lin/Downloads/Android/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.2.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.2"
-        sha1="6e3578f92f7462d1a935a1d36173e3bdd1234976">
-        <dex dex="/Users/Lin/Downloads/MyApplication/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.2.0_8601982c51e66d6515d273019e11a43cadf4cd51.jar" />
+        sha1="8c108c22c99e794eff255bb34d2a461200c4cbb0">
+        <dex dex="/Users/Lin/Downloads/Android/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-23.2.0_b95fcabd5ff40f57e9ff0e1da2e341d7c4c381e2.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/Lin/Downloads/MyApplication/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.2.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="d4c936aa8c7d2522c82e3f1829c791d9e367f009">
-        <dex dex="/Users/Lin/Downloads/MyApplication/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-23.2.0_f93412a82078edac4bf8d102661d18818ac9365c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Lin/Downloads/MyApplication/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/jars/libs/internal_impl-23.2.0.jar"
+        jar="/Users/Lin/Downloads/Android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/jars/libs/internal_impl-23.2.0.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.2"
         sha1="6e239441500605809818997dd63b62a947195f8c">
-        <dex dex="/Users/Lin/Downloads/MyApplication/app/build/intermediates/pre-dexed/debug/internal_impl-23.2.0_6762a38a2dbddae14ad7066d675cbd433c7444a8.jar" />
+        <dex dex="/Users/Lin/Downloads/Android/app/build/intermediates/pre-dexed/debug/internal_impl-23.2.0_98c20bef8d1b3a046ab1ebb4557a7d148bbeab73.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/Lin/Downloads/MyApplication/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.2.0/jars/classes.jar"
+        jar="/Users/Lin/Downloads/Android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.2"
-        sha1="292a9fa091757208efa65e77eef63088247e51f3">
-        <dex dex="/Users/Lin/Downloads/MyApplication/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-23.2.0_246e753ebe4e2a1a94eaf1eec5c03ca31a90c3a3.jar" />
+        sha1="6e3578f92f7462d1a935a1d36173e3bdd1234976">
+        <dex dex="/Users/Lin/Downloads/Android/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.2.0_6ab8a938ea3c8e2306f8829dd84e5943b452f45d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Lin/Downloads/Android/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="d4c936aa8c7d2522c82e3f1829c791d9e367f009">
+        <dex dex="/Users/Lin/Downloads/Android/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-23.2.0_bf82fb331f7fef60a3bad13bb1ade11c37f0de2b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Lin/Downloads/Android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="e5f32fa48a3eb2de0c987025c11b6e3864b634d9">
+        <dex dex="/Users/Lin/Downloads/Android/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.2.0_5bcc29ce85a8bdd5ae01af484267d57b397ffab3.jar" />
     </item>
 
 </items>

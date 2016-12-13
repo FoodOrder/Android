@@ -14,4 +14,5 @@
     <string name="title_activity_add_food">AddFoodActivity</string>
     <string name="title_activity_account">AccountActivity</string>
     <string name="title_activity_order_check">OrderCheckActivity</string>
+    <string name="title_activity_order_item">OrderItemActivity</string>
 </resources>

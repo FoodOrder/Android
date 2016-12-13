@@ -2,6 +2,7 @@ package sammy.myapplication;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Entity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -39,6 +40,7 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -51,6 +53,8 @@ public class CartlistActivity extends AppCompatActivity {
     ArrayList<Meal> Orderlist1 = new ArrayList<Meal>();
     public static final String KEY = "com.my.package.app";
     String item ="";
+    String ADDRESS = null;
+    String REMARK = null;
     String userID1;
     int id =1;
     private CartlistAdapter carlistadapter;
@@ -124,14 +128,13 @@ public class CartlistActivity extends AppCompatActivity {
                     conn.setReadTimeout(10000);
                     conn.setRequestProperty("Content-Type", "application/json;charset=utf-8");
                     conn.connect();
+
                     String userID = "\"userId\":"+userID1;
                     String LOG = "\"longitude\":"+currentLong;
                     String LAT = "\"latitude\":"+currentLat;
                     EditText address = (EditText)findViewById(R.id.address);
-                    String ADDRESS = "";
-                    ADDRESS = "\"address\":\""+address.getText().toString()+"\"";
                     EditText remark = (EditText)findViewById(R.id.remark);
-                    String REMARK ="";
+                    ADDRESS = "\"address\":\""+address.getText().toString()+"\"";
                     REMARK =  "\"remark\":\""+remark.getText().toString()+"\"";
                     for (int i = 0; i < Orderlist1.size(); i++) {
                             if(i != Orderlist1.size()-1) {
@@ -154,7 +157,7 @@ public class CartlistActivity extends AppCompatActivity {
                     int HttpResult =conn.getResponseCode();
                     if(HttpResult ==HttpURLConnection.HTTP_OK){
                         BufferedReader br = new BufferedReader(new InputStreamReader(
-                                conn.getInputStream(),"utf-8"));
+                                conn.getInputStream(),"UTF-8"));
                         String line = null;
                         StringBuffer sb = new StringBuffer();
                         while ((line = br.readLine()) != null) {

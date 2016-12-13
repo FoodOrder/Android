@@ -1,5 +1,6 @@
 package sammy.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -8,6 +9,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -23,6 +25,7 @@ import java.util.ArrayList;
 public class OrderCheckActivity extends AppCompatActivity {
     String userID;
     String ORDERCHECK_USER_ID;
+    private static final String URL ="http://140.134.26.71:58080/android-backend/webapi/orderItem/";
     private static final String ORDERCHECK_URL = "http://140.134.26.71:58080/android-backend/webapi/order/userId/";
     private static final int UPDATE_CHECK_LIST = 1;
     private OrderCheckAdapter orderCheckAdapter;
@@ -55,6 +58,19 @@ public class OrderCheckActivity extends AppCompatActivity {
             public void run() {
                 getShopListFromServer();
             }}).start();
+
+        oreder_check_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String checkurl = URL + String.valueOf(Checklist.get(position).getId());
+                Intent intent = new Intent(OrderCheckActivity.this, OrderItemActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("id",String.valueOf(Checklist.get(position).getId()));
+                bundle.putString("checkurl", checkurl);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
     }
 
     private void updateCheckList() {
@@ -89,7 +105,6 @@ public class OrderCheckActivity extends AppCompatActivity {
                     OrderChecklist Ordlist = new OrderChecklist();
                     Ordlist.setId(((JSONObject) jsonObis.get(i)).getString("id"));
                     Ordlist.setStatus(((JSONObject) jsonObis.get(i)).getString("status"));
-            //        Ordlist.setRemark(((JSONObject) jsonObis.get(i)).getString("remark"));
                     Ordlist.setOrderTime(((JSONObject) jsonObis.get(i)).getString("orderTime"));
                     Checklist.add(Ordlist);
                 }
