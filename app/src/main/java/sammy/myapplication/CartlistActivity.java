@@ -150,7 +150,8 @@ public class CartlistActivity extends AppCompatActivity {
 
                     Log.v("Andy", jsonString);
                     DataOutputStream localDataOutputStream = new DataOutputStream(conn.getOutputStream());
-                    localDataOutputStream.writeBytes(jsonString);
+                    byte[] bytes = jsonString.getBytes("UTF-8");
+                    localDataOutputStream.write(bytes,0, bytes.length);
                     localDataOutputStream.flush();
                     localDataOutputStream.close();
 

@@ -2,85 +2,103 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
-        jar="/Users/Lin/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.2.0/support-annotations-23.2.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="c5bf571bb10462bd90e5419ade67793f71acbc87">
-        <dex dex="/Users/Lin/Downloads/Android/app/build/intermediates/pre-dexed/debug/support-annotations-23.2.0_21bc1ba10b31fd4600be331925bcab39689052f5.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Lin/Downloads/Android/app/build/intermediates/exploded-aar/com.android.support/design/23.2.0/jars/classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="/Users/Eason/FoodOrderAndroid/app/build/intermediates/exploded-aar/com.android.support/design/23.2.0/jars/classes.jar"
+        jumboMode="true"
         optimize="true"
         revision="23.0.2"
         sha1="1aa5b025efe97f5006f5be16d6ca67c6c3c0c0d8">
-        <dex dex="/Users/Lin/Downloads/Android/app/build/intermediates/pre-dexed/debug/com.android.support-design-23.2.0_5118af405d6690e9c5dad4e42023cbdca016c332.jar" />
+        <dex dex="/Users/Eason/FoodOrderAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-23.2.0_304968e1f4aa080b6f701b79423de132f8079d82/classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="/Users/Lin/Downloads/Android/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.2.0/jars/classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="/Users/Eason/FoodOrderAndroid/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.2.0/jars/classes.jar"
+        jumboMode="true"
         optimize="true"
         revision="23.0.2"
         sha1="292a9fa091757208efa65e77eef63088247e51f3">
-        <dex dex="/Users/Lin/Downloads/Android/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-23.2.0_7e6c1055b498289da125b2cdc6855953b98339a9.jar" />
+        <dex dex="/Users/Eason/FoodOrderAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-23.2.0_f707015f1845f4ae0957b267f2f49c54d6164dac/classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="/Users/Lin/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
-        <dex dex="/Users/Lin/Downloads/Android/app/build/intermediates/pre-dexed/debug/gson-2.3.1_68833dfd2ced64cf2d06e867d840f218dac92fd2.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Lin/Downloads/Android/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.2.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="8c108c22c99e794eff255bb34d2a461200c4cbb0">
-        <dex dex="/Users/Lin/Downloads/Android/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-23.2.0_b95fcabd5ff40f57e9ff0e1da2e341d7c4c381e2.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Lin/Downloads/Android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/jars/libs/internal_impl-23.2.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.2"
-        sha1="6e239441500605809818997dd63b62a947195f8c">
-        <dex dex="/Users/Lin/Downloads/Android/app/build/intermediates/pre-dexed/debug/internal_impl-23.2.0_98c20bef8d1b3a046ab1ebb4557a7d148bbeab73.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/Lin/Downloads/Android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/jars/classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="/Users/Eason/FoodOrderAndroid/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.2.0/jars/classes.jar"
+        jumboMode="true"
         optimize="true"
         revision="23.0.2"
         sha1="6e3578f92f7462d1a935a1d36173e3bdd1234976">
-        <dex dex="/Users/Lin/Downloads/Android/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.2.0_6ab8a938ea3c8e2306f8829dd84e5943b452f45d.jar" />
+        <dex dex="/Users/Eason/FoodOrderAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-23.2.0_171125a1d211030c3235af6a6874fbef735b433b/classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="/Users/Lin/Downloads/Android/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.2.0/jars/classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="/Users/Eason/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="/Users/Eason/FoodOrderAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/gson-2.3.1_0f51ef49c99b72463ec764162c82c3d9167d4a1c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Eason/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.2.0/support-annotations-23.2.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="c5bf571bb10462bd90e5419ade67793f71acbc87">
+        <dex dex="/Users/Eason/FoodOrderAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.2.0_94feee6c8ea428d663472c2c11db9f9e3e2366d7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Eason/FoodOrderAndroid/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.2.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="8c108c22c99e794eff255bb34d2a461200c4cbb0">
+        <dex dex="/Users/Eason/FoodOrderAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-23.2.0_33ce7176993e4a4751a0b8f8135904fd10b334b5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Eason/FoodOrderAndroid/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.2.0/jars/classes.jar"
+        jumboMode="true"
         optimize="true"
         revision="23.0.2"
         sha1="d4c936aa8c7d2522c82e3f1829c791d9e367f009">
-        <dex dex="/Users/Lin/Downloads/Android/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-23.2.0_bf82fb331f7fef60a3bad13bb1ade11c37f0de2b.jar" />
+        <dex dex="/Users/Eason/FoodOrderAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-23.2.0_8305d13b8c6bd2fa299e2af747cf31689c8eefa2/classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="/Users/Lin/Downloads/Android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/jars/classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="/Users/Eason/FoodOrderAndroid/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="fa2b5bc6d0ec6bb45e18ea73b7f94674cf7c03d0">
+        <dex dex="/Users/Eason/FoodOrderAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_2f74b87b4d54d28b0a14f3764c62a2b7b41c0f1f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Eason/FoodOrderAndroid/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="c83bd05d1d4788c006e3e6d916cd98cc010ddba7">
+        <dex dex="/Users/Eason/FoodOrderAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_220991295e00e783f0837087292d72bbb322bdec/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Eason/FoodOrderAndroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/jars/classes.jar"
+        jumboMode="true"
         optimize="true"
         revision="23.0.2"
         sha1="e5f32fa48a3eb2de0c987025c11b6e3864b634d9">
-        <dex dex="/Users/Lin/Downloads/Android/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.2.0_5bcc29ce85a8bdd5ae01af484267d57b397ffab3.jar" />
+        <dex dex="/Users/Eason/FoodOrderAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-23.2.0_0f6762c4a59d930bafcfd10b193e1b5acf5170b0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Eason/FoodOrderAndroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.2.0/jars/libs/internal_impl-23.2.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="6e239441500605809818997dd63b62a947195f8c">
+        <dex dex="/Users/Eason/FoodOrderAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.2.0_5fe0fca78cc04e7e00892b1c46f8d7e14582a717/classes.dex" />
     </item>
 
 </items>
