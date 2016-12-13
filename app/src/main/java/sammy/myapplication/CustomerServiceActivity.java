@@ -7,7 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +24,7 @@ import java.net.URL;
 
 public class CustomerServiceActivity extends AppCompatActivity {
     String userID1;
+    String TYPE1 ;
     private static final String ADDURL = "http://140.134.26.71:58080/android-backend/webapi/comment/register";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +34,27 @@ public class CustomerServiceActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         getbundle();
+        Spinner spinner = (Spinner)findViewById(R.id.spinner);
+        final String[] servecelist = {"修改使用者姓名","修改使用者密碼", "程式使用回饋", "舉報店家服務","其他"};
+        ArrayAdapter<String> List = new ArrayAdapter<>(CustomerServiceActivity.this,
+                android.R.layout.simple_spinner_dropdown_item,
+                servecelist);
+        spinner.setAdapter(List);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                TYPE1 = servecelist[position];
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                                   send();
+                send();
                 Toast.makeText(CustomerServiceActivity.this, "服務訊息已送出", Toast.LENGTH_LONG).show();
 
                 CustomerServiceActivity.this.finish();
@@ -65,9 +84,7 @@ public class CustomerServiceActivity extends AppCompatActivity {
                     conn.setRequestProperty("Content-Type", "application/json;charset=utf-8");
                     conn.connect();
                     String userID = "\"userId\":"+userID1;
-                    EditText tvtype = (EditText)findViewById(R.id.type);
-                    String TYPE = "";
-                    TYPE = "\"type\":\""+tvtype.getText().toString()+"\"";
+                    String TYPE = "\"type\":\""+TYPE1+"\"";
                     TextView tvcontent = (TextView)findViewById(R.id.content);
                     String CONTENT ="";
                     CONTENT =  "\"content\":\""+tvcontent.getText().toString()+"\"";
@@ -78,7 +95,8 @@ public class CustomerServiceActivity extends AppCompatActivity {
 
                     Log.v("Andy", jsonString);
                     DataOutputStream localDataOutputStream = new DataOutputStream(conn.getOutputStream());
-                    localDataOutputStream.writeBytes(jsonString);
+                    byte[] bytes = jsonString.getBytes("UTF-8");
+                    localDataOutputStream.write(bytes,0, bytes.length);
                     localDataOutputStream.flush();
                     localDataOutputStream.close();
 

@@ -55,13 +55,13 @@ public class AccountActivity extends AppCompatActivity {
     }
 
     private void updateUserDetail() {
-        TextView userid = (TextView)findViewById(R.id.userid);
+
         TextView username = (TextView)findViewById(R.id.username);
         TextView useremail = (TextView)findViewById(R.id.useremail);
         TextView userpassword = (TextView)findViewById(R.id.userpassword);
         TextView userphone = (TextView)findViewById(R.id.userphone);
 
-        userid.setText(userID);
+
         username.setText(userName);
         userphone.setText(userPhone);
         useremail.setText(userEmail);

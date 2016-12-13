@@ -23,13 +23,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="種類(如修改密碼,等)"
+            android:text="種類"
             android:id="@+id/textView12" />
 
-        <EditText
-            android:layout_width="match_parent"
+        <Spinner
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/type" />
+            android:id="@+id/spinner" />
 
         <TextView
             android:layout_width="wrap_content"

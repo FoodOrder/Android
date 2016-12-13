@@ -104,6 +104,13 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            SharedPreferences spref = getApplication().getSharedPreferences(KEY, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = spref.edit();
+            editor.clear();
+            editor.commit();
+            Intent intent = new Intent();
+            intent.setClass(this, LoginActivity.class);
+            startActivity(intent);
             return true;
         }
 

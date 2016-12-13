@@ -41,12 +41,6 @@ public class OrderActivity extends AppCompatActivity {
     };
 
 
-  /*  AdapterView.OnItemClickListener onClickListener = new AdapterView.OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        }
-    };*/
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +71,7 @@ public class OrderActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(OrderActivity.this, MealListActivity.class);
                 Bundle bundle = new Bundle();
+                bundle.putString("id", String.valueOf(listShops.get(position).getId()));
                 bundle.putString("shopemail", shopemail);
                 bundle.putString("shopName", shopName);
                 bundle.putString("shopPic", shopPic);
@@ -113,6 +108,7 @@ public class OrderActivity extends AppCompatActivity {
             if (jsonObis.length() > 0) {
                 for(int i = 0; i < jsonObis.length(); i++) {
                     Shop shop = new Shop();
+                    shop.setId(Integer.parseInt(((JSONObject) jsonObis.get(i)).getString("ID")));
                     shop.setName(((JSONObject) jsonObis.get(i)).getString("shopName"));
                     shop.setTel(((JSONObject) jsonObis.get(i)).getString("phone"));
                     shop.setImgURL(((JSONObject) jsonObis.get(i)).getString("photo"));

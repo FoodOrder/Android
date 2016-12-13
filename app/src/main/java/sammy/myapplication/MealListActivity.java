@@ -35,6 +35,7 @@ public class MealListActivity extends AppCompatActivity {
     static String shopName;
     static String shopPic;
     static String shopTel;
+    static String shopid;
     public static int GET_AMOUNT = 100;
     String tempid;
     int tempamt;
@@ -63,7 +64,7 @@ public class MealListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        LayoutInflater inflater = getLayoutInflater();
+        final LayoutInflater inflater = getLayoutInflater();
 
         final View view1 = inflater.inflate(R.layout.activity_meal_list, null);
 
@@ -71,16 +72,19 @@ public class MealListActivity extends AppCompatActivity {
 
         getbundle();
 
-      //  ImageView shopimg = (ImageView)findViewById(R.id.shopimg);
-       // shopimg.setImageDrawable(loadImageFromURL(shopPic));
 
         FloatingActionButton fab = (FloatingActionButton) view1.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(MealListActivity.this, CartlistActivity.class);
+
                 intent.setClass(MealListActivity.this, CartlistActivity.class);
+
                 intent.putExtra("FinalOrder", listMenu);
+                intent.putExtra("ID",shopid);
+
                 startActivity(intent);
                 MealListActivity.this.finish();
                 Snackbar.make(view, "前往購物車", Snackbar.LENGTH_LONG)
@@ -164,6 +168,7 @@ public class MealListActivity extends AppCompatActivity {
 
     void getbundle() {
         Bundle bundle = this.getIntent().getExtras();
+        shopid = bundle.getString("id");
         Shopemail = bundle.getString("shopemail");
         shopName = bundle.getString("shopName");
         shopPic = bundle.getString("shopPic");

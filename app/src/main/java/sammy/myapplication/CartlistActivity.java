@@ -2,7 +2,6 @@ package sammy.myapplication;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.Entity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -23,13 +22,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.annotations.SerializedName;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.DataOutputStream;
@@ -42,16 +34,15 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
-import javax.net.ssl.HttpsURLConnection;
+
 
 public class CartlistActivity extends AppCompatActivity {
     private static final String ADDURL = "http://140.134.26.71:58080/android-backend/webapi/order/addOrder";
     ArrayList<Meal> Orderlist = new ArrayList<Meal>();
     ArrayList<Meal> Orderlist1 = new ArrayList<Meal>();
     public static final String KEY = "com.my.package.app";
+    String ID;
     String item ="";
     String ADDRESS = null;
     String REMARK = null;
@@ -101,6 +92,8 @@ public class CartlistActivity extends AppCompatActivity {
 
     void getbundle() {
         Intent intent = this.getIntent();
+        ID = intent.getStringExtra("ID");
+        Log.i("123",ID);
         Orderlist = (ArrayList<Meal>) intent.getSerializableExtra("FinalOrder");
         for (int i = 0; i < Orderlist.size(); i++) {
             System.out.print(Orderlist.get(i).getMealid() + ",");
@@ -128,7 +121,7 @@ public class CartlistActivity extends AppCompatActivity {
                     conn.setReadTimeout(10000);
                     conn.setRequestProperty("Content-Type", "application/json;charset=utf-8");
                     conn.connect();
-
+                    String id = "\"shopId\":"+ID;
                     String userID = "\"userId\":"+userID1;
                     String LOG = "\"longitude\":"+currentLong;
                     String LAT = "\"latitude\":"+currentLat;
@@ -144,13 +137,14 @@ public class CartlistActivity extends AppCompatActivity {
                             }
                     }
 
-                    String jsonString = "{\"items\":["+ item+"],"+userID+","+LOG+","+LAT+","+ADDRESS+","+REMARK+"}";
+                    String jsonString = "{\"items\":["+ item+"],"+userID+","+LOG+","+LAT+","+ADDRESS+","+REMARK+","+id+"}";
 
                     System.out.println(jsonString);
 
                     Log.v("Andy", jsonString);
                     DataOutputStream localDataOutputStream = new DataOutputStream(conn.getOutputStream());
-                    localDataOutputStream.writeBytes(jsonString);
+                    byte[] bytes = jsonString.getBytes("UTF-8");
+                    localDataOutputStream.write(bytes,0, bytes.length);
                     localDataOutputStream.flush();
                     localDataOutputStream.close();
 

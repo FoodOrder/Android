@@ -36,7 +36,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".CustomerServiceActivity"
-            android:label="客服服務"
+            android:label="客戶服務"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AroundActivity"

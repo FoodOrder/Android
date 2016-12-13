@@ -21,6 +21,7 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -37,6 +38,7 @@ import java.util.Map;
 import javax.net.ssl.HttpsURLConnection;
 
 public class LoginActivity extends AppCompatActivity {
+
     public static final String KEY = "com.my.package.app";
     private Handler handler = new Handler() {
         public void handleMessage(Message msg) {
@@ -85,6 +87,14 @@ public class LoginActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         initUIComponents();
+        SharedPreferences spref = getApplication().getSharedPreferences(KEY, Context.MODE_PRIVATE);
+        if(spref.getString("email",null)!=null){
+            System.out.println(spref.getString("email", null));
+            System.out.println(spref.getString("pass", null));
+            loginEmail.setText(spref.getString("email", null));
+            loginPass.setText(spref.getString("pass",null));
+            submitRegistration();
+        }
     }
     private void initUIComponents() {
 
@@ -164,8 +174,11 @@ public class LoginActivity extends AppCompatActivity {
         if(getSORN().equalsIgnoreCase(success)){
             SharedPreferences spref = getApplication().getSharedPreferences(KEY, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = spref.edit();
-            editor.putString("email",loginEmail.getText().toString());
+
+            editor.putString("email", loginEmail.getText().toString());
+            editor.putString("pass", loginPass.getText().toString());
             editor.commit();
+
             Toast.makeText(LoginActivity.this,"登入成功",Toast.LENGTH_LONG).show();
             Intent intent = new Intent();
             intent.setClass(LoginActivity.this, MainActivity.class);
