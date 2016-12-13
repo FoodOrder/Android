@@ -28,6 +28,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class AroundActivity extends AppCompatActivity {
+    ListView aroundListView;
     private static final String SERVICE_URL = "http://140.134.26.71:58080/android-backend/webapi/shop/list";
     private static final double EARTH_RADIUS = 6378.137;
     private static final int UPDATE_SHOP_LIST = 1;
@@ -57,15 +58,16 @@ public class AroundActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ListView aroundListView = (ListView) this.findViewById(R.id.aroundlistView);
+        aroundListView = (ListView) this.findViewById(R.id.aroundlistView);
         aroundAdapter = new AroundAdapter(this, new ArrayList<Shop>());
-        aroundListView.setAdapter(aroundAdapter);
+      //  aroundListView.setAdapter(aroundAdapter);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                aroundListView.setAdapter(null);
+                aroundListView.setAdapter(aroundAdapter);
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -74,24 +76,26 @@ public class AroundActivity extends AppCompatActivity {
                 }).start();
                 Snackbar.make(view, "定位完成,如距離無法顯示請等待當前位置載入完成後重試", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
             }
         });
 
         mgr = (LocationManager) getSystemService(LOCATION_SERVICE);
         setMyLoc();
         System.out.println("Lat : " + String.valueOf(currentLat) + "\nLong : " + String.valueOf(currentLong));
-       /* while(currentLat!=0.0 || currentLong!=0.0) {
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    getShopListFromServer();
-                      System.out.println(listShops.get(0).getDistance());
-                }
-            }).start();
-        }*/
     }
 
     private void updateShopList() {
+        for (int i=0; i<listShops.size() ; i++){
+            for(int j=0;i>j;j++){
+                if(listShops.get(i).getDistance()<listShops.get(j).getDistance()){
+                    Double temp;
+                    temp = listShops.get(i).getDistance();
+                    listShops.get(i).setDistance(listShops.get(j).getDistance());
+                    listShops.get(j).setDistance(temp);
+                }
+            }
+        }
         aroundAdapter.clear();
         aroundAdapter.addAll(listShops);
     }
@@ -200,6 +204,8 @@ public class AroundActivity extends AppCompatActivity {
     }
 
     void getShopListFromServer() {
+
+
         HttpURLConnection conn = null;
         try {
             // 建立連線
