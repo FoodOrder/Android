@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -29,6 +30,7 @@ import java.util.ArrayList;
 
 public class AroundActivity extends AppCompatActivity {
     ListView aroundListView;
+    Double compare = 0.0;
     private static final String SERVICE_URL = "http://140.134.26.71:58080/android-backend/webapi/shop/list";
     private static final double EARTH_RADIUS = 6378.137;
     private static final int UPDATE_SHOP_LIST = 1;
@@ -60,23 +62,24 @@ public class AroundActivity extends AppCompatActivity {
 
         aroundListView = (ListView) this.findViewById(R.id.aroundlistView);
         aroundAdapter = new AroundAdapter(this, new ArrayList<Shop>());
-      //  aroundListView.setAdapter(aroundAdapter);
+        aroundListView.setAdapter(aroundAdapter);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                aroundListView.setAdapter(null);
-                aroundListView.setAdapter(aroundAdapter);
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        getShopListFromServer();
-                    }
-                }).start();
-                Snackbar.make(view, "定位完成,如距離無法顯示請等待當前位置載入完成後重試", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-
+                if(currentLat.equals(compare)&&currentLong.equals(compare)){
+                    Toast.makeText(AroundActivity.this, "請等待GPS載入完成", Toast.LENGTH_LONG).show();
+                }else {
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            getShopListFromServer();
+                        }
+                    }).start();
+                    Snackbar.make(view, "定位完成,如距離移動請再次點擊定位", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
             }
         });
 
@@ -90,14 +93,23 @@ public class AroundActivity extends AppCompatActivity {
             for(int j=0;i>j;j++){
                 if(listShops.get(i).getDistance()<listShops.get(j).getDistance()){
                     Double temp;
+                    String tempname;
+                    String tempphone;
+                    tempname = listShops.get(i).getName();
                     temp = listShops.get(i).getDistance();
+                    tempphone = listShops.get(i).getTel();
+                    listShops.get(i).setTel(listShops.get(j).getTel());
+                    listShops.get(i).setName(listShops.get(j).getName());
                     listShops.get(i).setDistance(listShops.get(j).getDistance());
                     listShops.get(j).setDistance(temp);
+                    listShops.get(j).setName(tempname);
+                    listShops.get(j).setTel(tempphone);
                 }
             }
         }
         aroundAdapter.clear();
         aroundAdapter.addAll(listShops);
+        listShops.clear();
     }
 
 

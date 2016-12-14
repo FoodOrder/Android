@@ -111,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent();
             intent.setClass(this, LoginActivity.class);
             startActivity(intent);
+            MainActivity.this.finish();
             return true;
         }
 
