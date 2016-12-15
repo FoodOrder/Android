@@ -2,6 +2,7 @@ package sammy.myapplication;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -23,6 +24,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -35,6 +37,7 @@ public class AroundActivity extends AppCompatActivity {
     private static final double EARTH_RADIUS = 6378.137;
     private static final int UPDATE_SHOP_LIST = 1;
     private ArrayList<Shop> listShops = new ArrayList<Shop>();
+    private ArrayList<Shop> listShops1 = new ArrayList<Shop>();
     static final int MIN_TIME = 5000;// 位置更新條件：5000 毫秒
     static final float MIN_DIST = 5; // 位置更新條件：5 公尺
     LocationManager mgr;        // 定位總管
@@ -95,9 +98,13 @@ public class AroundActivity extends AppCompatActivity {
                     Double temp;
                     String tempname;
                     String tempphone;
+                    Drawable tempimg;
                     tempname = listShops.get(i).getName();
                     temp = listShops.get(i).getDistance();
                     tempphone = listShops.get(i).getTel();
+                    tempimg = listShops.get(i).getImg();
+                    listShops.get(i).setImg(listShops.get(j).getImg());
+                    listShops.get(i).setImg(tempimg);
                     listShops.get(i).setTel(listShops.get(j).getTel());
                     listShops.get(i).setName(listShops.get(j).getName());
                     listShops.get(i).setDistance(listShops.get(j).getDistance());
@@ -107,8 +114,13 @@ public class AroundActivity extends AppCompatActivity {
                 }
             }
         }
+        for (int i=0; i<listShops.size() ; i++){
+            if (listShops.get(i).getDistance()<500){
+                listShops1.add(listShops.get(i));
+            }
+        }
         aroundAdapter.clear();
-        aroundAdapter.addAll(listShops);
+        aroundAdapter.addAll(listShops1);
         listShops.clear();
     }
 
@@ -242,6 +254,8 @@ public class AroundActivity extends AppCompatActivity {
                     shop.setLatitude(Double.parseDouble(((JSONObject) jsonObis.get(i)).getString("latitude")));
                     shop.setLongitude(Double.parseDouble(((JSONObject) jsonObis.get(i)).getString("longitude")));
                     shop.setDistance(GetDistance(Double.parseDouble(((JSONObject) jsonObis.get(i)).getString("latitude")), Double.parseDouble(((JSONObject) jsonObis.get(i)).getString("longitude")), currentLat, currentLong));
+                    shop.setImgURL(((JSONObject) jsonObis.get(i)).getString("photo"));
+                    shop.setImg(loadImageFromURL(shop.getImgURL()));
                     System.out.println(shop.getDistance());
                     listShops.add(shop);
                 }
@@ -251,6 +265,15 @@ public class AroundActivity extends AppCompatActivity {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+    private Drawable loadImageFromURL(String url) {
+        try {
+            InputStream is = (InputStream) new URL(url).getContent();
+            Drawable draw = Drawable.createFromStream(is, "src");
+            return draw;
+        } catch (Exception e) {
+            return null;
         }
     }
 

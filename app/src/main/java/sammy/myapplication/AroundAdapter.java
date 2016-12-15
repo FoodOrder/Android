@@ -30,6 +30,8 @@ public class AroundAdapter  extends ArrayAdapter<Shop> {
         TextView tvShopName = (TextView)convertView.findViewById(R.id.ar_name);
         TextView tvPhone = (TextView)convertView.findViewById(R.id.ar_phone);
         TextView tvDistance = (TextView)convertView.findViewById(R.id.ar_distance);
+        ImageView imageView = (ImageView)convertView.findViewById(R.id.aroundimgView);
+        imageView.setImageDrawable(shop.getImg());
         tvShopName.setText(shop.getName());
         tvPhone.setText(shop.getTel());
         tvDistance.setText(shop.getDistance().toString()+"M");
