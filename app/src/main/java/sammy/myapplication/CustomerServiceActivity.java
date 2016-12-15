@@ -25,6 +25,7 @@ import java.net.URL;
 public class CustomerServiceActivity extends AppCompatActivity {
     String userID1;
     String TYPE1 ;
+    TextView tvcontent ;
     private static final String ADDURL = "http://140.134.26.71:58080/android-backend/webapi/comment/register";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class CustomerServiceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_customerservice);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        tvcontent = (TextView)findViewById(R.id.content);
         getbundle();
         Spinner spinner = (Spinner)findViewById(R.id.spinner);
         final String[] servecelist = {"修改使用者姓名","修改使用者密碼", "程式使用回饋", "舉報店家服務","其他"};
@@ -53,11 +54,17 @@ public class CustomerServiceActivity extends AppCompatActivity {
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                send();
-                Toast.makeText(CustomerServiceActivity.this, "服務訊息已送出", Toast.LENGTH_LONG).show();
 
-                CustomerServiceActivity.this.finish();
+
+            public void onClick(View view) {
+
+                if (tvcontent.getText().toString().equals("")){
+                    Snackbar.make(view, "請輸入內容", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                }else{
+                    send();
+                    Toast.makeText(CustomerServiceActivity.this, "服務訊息已送出", Toast.LENGTH_LONG).show();
+                    CustomerServiceActivity.this.finish();
+                }
             }
         });
 
@@ -85,7 +92,7 @@ public class CustomerServiceActivity extends AppCompatActivity {
                     conn.connect();
                     String userID = "\"userId\":"+userID1;
                     String TYPE = "\"type\":\""+TYPE1+"\"";
-                    TextView tvcontent = (TextView)findViewById(R.id.content);
+                    tvcontent = (TextView)findViewById(R.id.content);
                     String CONTENT ="";
                     CONTENT =  "\"content\":\""+tvcontent.getText().toString()+"\"";
 
